@@ -3,7 +3,7 @@
 //  Swiftk
 //
 //  Created by KingCQ on 16/5/30.
-//  Copyright © 2016年 Jack. All rights reserved.
+//  Copyright © 2016年 KingCQ. All rights reserved.
 //
 
 import UIKit
