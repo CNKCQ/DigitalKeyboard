@@ -85,11 +85,6 @@ class KeyboardNotification: AnyObject {
             bottomY += subView.frame.origin.y
         }
         
-        // 这边添加 superViewTopMargin 为 传入的 superView 距离整个屏幕的上边距
-        // 因为此处的计算是否上移，是根整个屏幕的高度进行比较的
-        // 并且 superView 的原始Y位置也有可能不为0
-        // 还有可能 superView 还有好几层的superView
-        // 这边也需要考虑是否是滚动视图
         bottomY += superViewTopMargin!
         if superView!.isKindOfClass(UIScrollView) == true {
             let supV: UIScrollView = superView as! UIScrollView
