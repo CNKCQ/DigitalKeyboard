@@ -15,8 +15,13 @@ let CLEAR_NOTIFICTION = "CLEAR_NOTIFICTION"
 
 typealias InputTextClosure = (String)->()
 
-class KeyboardView: UIView {
+class KeyboardView: UIView, UITextFieldDelegate{
+    static let shareKeyboard: KeyboardView = KeyboardView()
+    var textFields = [UITextField]()
+    
     var inputTextClosure: InputTextClosure?
+    var superView: UIView! = nil
+    
     var text = ""
     
     override init(frame: CGRect) {
@@ -35,19 +40,22 @@ class KeyboardView: UIView {
         
         let frame: CGRect = CGRectMake(0,0,SCREEN_WIDTH,frameH)
         super.init(frame: frame)
-        addKeyboard()
         self.backgroundColor = .lightGrayColor()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(clearTap), name: CLEAR_NOTIFICTION, object: nil)
         customSubview(frame)
         
     }
     
-    func addKeyboard() {
-                print("rootController---\(visibleController())")
-    }
-    
-    func visibleController() -> UIViewController {
-        return (UIApplication.sharedApplication().windows.first?.rootViewController)!
+    func addKeyboard(view: UIView) {
+        superView = view
+        KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
+        for view in superView.subviews {
+            if view.isKindOfClass(UITextField) {
+                let textField: UITextField = view as! UITextField
+                textField.delegate = self
+                textFields.append(textField)
+                textField.inputView = self
+            }
+        }
     }
     
    private func customSubview(frame: CGRect){
@@ -78,25 +86,31 @@ class KeyboardView: UIView {
         if sender.currentTitle! == "回退" {
             if text.characters.count > 0 {
                 text = text.removeLastCharacter()
-                if inputTextClosure != nil {
-                    inputTextClosure!(text)
-                }
             }
+        } else {
+            text += sender.currentTitle!
+        }
+        
+        editTextField(text)
+ 
+    }
+    
+    func editTextField(text: String) {
+        if textFields.count == 0 {
             return
         }
-        text += sender.currentTitle!
-        if inputTextClosure != nil {
-            inputTextClosure!(text)
+        for field in textFields {
+            if field.isFirstResponder() == true {
+                field.text = text
+            }
         }
     }
     
-    func clearTap() {
+    func textFieldShouldClear(textField: UITextField) -> Bool {
         text = ""
+        return true
     }
-    
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
+ 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

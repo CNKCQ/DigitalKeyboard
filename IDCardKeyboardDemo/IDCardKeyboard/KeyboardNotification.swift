@@ -32,7 +32,7 @@ class KeyboardNotification: AnyObject {
         let duration: Double = (info.objectForKey(UIKeyboardAnimationDurationUserInfoKey)?.doubleValue)!
         let keyboardSize: CGSize = value.CGRectValue().size
         
-        let firstResponderView: UIView? = getFirstResponderAtView(superView!)
+        let firstResponderView: UIView? = UIView.getFirstResponderAtView(superView!)
         
         if firstResponderView != nil {
             let bottomY: CGFloat = caculateAbsoluteBottomY(firstResponderView!) + 20
@@ -69,22 +69,7 @@ class KeyboardNotification: AnyObject {
         }
     }
     
-    func getFirstResponderAtView(view: UIView) -> UIView? {
-        for subView in view.subviews {
-            if subView.isFirstResponder() == true {
-                return subView
-            }
-        }
-        // 没有找到，继续子view寻找
-        for subView in view.subviews {
-            let firstResponderView: UIView? = getFirstResponderAtView(subView)
-            if firstResponderView != nil && firstResponderView!.isFirstResponder() == true {
-                return firstResponderView!
-            }
-            
-        }
-        return nil
-    }
+
     
     func caculateAbsoluteBottomY(view: UIView) -> CGFloat {
         
@@ -119,4 +104,24 @@ class KeyboardNotification: AnyObject {
 
     }
     
+}
+
+extension UIView {
+    
+    class func getFirstResponderAtView(view: UIView) -> UIView? {
+        for subView in view.subviews {
+            if subView.isFirstResponder() == true {
+                return subView
+            }
+        }
+        // 没有找到，继续子view寻找
+        for subView in view.subviews {
+            let firstResponderView: UIView? = getFirstResponderAtView(subView)
+            if firstResponderView != nil && firstResponderView!.isFirstResponder() == true {
+                return firstResponderView!
+            }
+            
+        }
+        return nil
+    }
 }
