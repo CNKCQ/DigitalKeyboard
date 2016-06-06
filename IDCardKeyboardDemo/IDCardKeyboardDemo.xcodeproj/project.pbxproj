@@ -15,6 +15,7 @@
 		3C64875B1CFC276600662391 /* IDCardKeyboardDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C64875A1CFC276600662391 /* IDCardKeyboardDemoTests.swift */; };
 		3C6487661CFC276600662391 /* IDCardKeyboardDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6487651CFC276600662391 /* IDCardKeyboardDemoUITests.swift */; };
 		3C6487751CFC27FB00662391 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6487741CFC27FB00662391 /* KeyboardView.swift */; };
+		3C6487831CFD236400662391 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6487821CFD236400662391 /* KeyboardNotification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3C6487651CFC276600662391 /* IDCardKeyboardDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardKeyboardDemoUITests.swift; sourceTree = "<group>"; };
 		3C6487671CFC276600662391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C6487741CFC27FB00662391 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		3C6487821CFD236400662391 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				3C6487741CFC27FB00662391 /* KeyboardView.swift */,
+				3C6487821CFD236400662391 /* KeyboardNotification.swift */,
 			);
 			path = IDCardKeyboard;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C6487831CFD236400662391 /* KeyboardNotification.swift in Sources */,
 				3C6487751CFC27FB00662391 /* KeyboardView.swift in Sources */,
 				3C6487481CFC276600662391 /* ViewController.swift in Sources */,
 				3C6487461CFC276600662391 /* AppDelegate.swift in Sources */,

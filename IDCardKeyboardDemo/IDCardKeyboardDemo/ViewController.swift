@@ -10,11 +10,13 @@ import UIKit
 
 class ViewController: UIViewController,UITextFieldDelegate {
     let textField: UITextField = UITextField()
+    let fieldNext: UITextField = UITextField()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .blueColor()
-        textField.frame = CGRectMake(80, 100, 160, 30)
+        textField.frame = CGRectMake(80, 400, 160, 30)
         textField.borderStyle = .RoundedRect
         textField.clearButtonMode = .WhileEditing
         textField.delegate = self
@@ -27,6 +29,17 @@ class ViewController: UIViewController,UITextFieldDelegate {
         textField.becomeFirstResponder()
         view.addSubview(textField)
         
+        fieldNext.frame = CGRectMake(80, 500, 160, 30)
+        fieldNext.borderStyle = .RoundedRect
+        fieldNext.placeholder = "nextField"
+        fieldNext.delegate = self
+        fieldNext.inputView = keyboardView
+        view .addSubview(fieldNext)
+        
+        KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(view, margin: 0)
+        
+        print("vrootController---\(UIApplication.sharedApplication().windows.first?.rootViewController)")
+        
     }
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
@@ -35,6 +48,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         textField.resignFirstResponder()
+        fieldNext.resignFirstResponder()
     }
     
 }

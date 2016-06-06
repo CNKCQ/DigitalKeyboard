@@ -35,13 +35,22 @@ class KeyboardView: UIView {
         
         let frame: CGRect = CGRectMake(0,0,SCREEN_WIDTH,frameH)
         super.init(frame: frame)
+        addKeyboard()
         self.backgroundColor = .lightGrayColor()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(clearTap), name: CLEAR_NOTIFICTION, object: nil)
         customSubview(frame)
         
     }
     
-    func customSubview(frame: CGRect){
+    func addKeyboard() {
+                print("rootController---\(visibleController())")
+    }
+    
+    func visibleController() -> UIViewController {
+        return (UIApplication.sharedApplication().windows.first?.rootViewController)!
+    }
+    
+   private func customSubview(frame: CGRect){
         for idx in 0...11 {
             let button: UIButton = UIButton()
             button.frame = CGRectMake(CGFloat(idx%3) * (frame.width/3+marginvalue), CGFloat(idx/3) * (frame.height/4.0 + marginvalue), frame.width/3, frame.height/4.0)
@@ -112,6 +121,7 @@ extension UIImage {
         return image
     }
 }
+
 
 
 
