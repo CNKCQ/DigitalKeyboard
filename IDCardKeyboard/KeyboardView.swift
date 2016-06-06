@@ -3,27 +3,68 @@
 //  Swiftk
 //
 //  Created by KingCQ on 16/5/30.
-//  Copyright © 2016年 Jack. All rights reserved.
+//  Copyright © 2016年 KingCQ. All rights reserved.
 //
 
 import UIKit
+
 let marginvalue = CGFloat(0.5)
+let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
+let CLEAR_NOTIFICTION = "CLEAR_NOTIFICTION"
+
 
 typealias InputTextClosure = (String)->()
 
-class KeyboardView: UIView {
+class KeyboardView: UIView, UITextFieldDelegate{
+    static let shareKeyboard: KeyboardView = KeyboardView()
+    var textFields = [UITextField]()
+    
     var inputTextClosure: InputTextClosure?
+    var superView: UIView! = nil
+    
     var text = ""
     
     override init(frame: CGRect) {
-        let frame: CGRect = CGRectMake(0,0,WIDTH,224.0)
+        let frameH = CGFloat(224.0)
+//        var frameH = CGFloat(224.0)
+//        switch Device() {
+//        case .iPhone5,.iPhone5s,.iPhone5c:
+//            frameH = CGFloat(224.0)
+//        case .iPhone6,.iPhone6s:
+//            frameH = CGFloat(258.0)
+//        case .iPhone6Plus,.iPhone6sPlus:
+//            frameH = CGFloat(271.0)
+//        default:
+//            break
+//        } 这个根据自己项目来适配
+        
+        let frame: CGRect = CGRectMake(0,0,SCREEN_WIDTH,frameH)
         super.init(frame: frame)
-        self.backgroundColor = .blackColor()
+        self.backgroundColor = .lightGrayColor()
         customSubview(frame)
         
     }
     
-    func customSubview(frame: CGRect){
+    func addKeyboard(view: UIView, field: UITextField?) {
+        superView = view
+        KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
+        if field != nil {
+            textFields.append(field!)
+            field!.inputView = self
+            field!.delegate = self
+            return
+        }
+        for view in superView.subviews {
+            if view.isKindOfClass(UITextField) {
+                let textField: UITextField = view as! UITextField
+                textField.delegate = self
+                textFields.append(textField)
+                textField.inputView = self
+            }
+        }
+    }
+    
+   private func customSubview(frame: CGRect){
         for idx in 0...11 {
             let button: UIButton = UIButton()
             button.frame = CGRectMake(CGFloat(idx%3) * (frame.width/3+marginvalue), CGFloat(idx/3) * (frame.height/4.0 + marginvalue), frame.width/3, frame.height/4.0)
@@ -51,18 +92,31 @@ class KeyboardView: UIView {
         if sender.currentTitle! == "回退" {
             if text.characters.count > 0 {
                 text = text.removeLastCharacter()
-                if inputTextClosure != nil {
-                    inputTextClosure!(text)
-                }
             }
+        } else {
+            text += sender.currentTitle!
+        }
+        
+        editTextField(text)
+ 
+    }
+    
+    func editTextField(text: String) {
+        if textFields.count == 0 {
             return
         }
-        text += sender.currentTitle!
-        if inputTextClosure != nil {
-            inputTextClosure!(text)
+        for field in textFields {
+            if field.isFirstResponder() == true {
+                field.text = text
+            }
         }
     }
     
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        text = ""
+        return true
+    }
+ 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -87,6 +141,9 @@ extension UIImage {
         return image
     }
 }
+
+
+
 
 /*
  keyboard height
