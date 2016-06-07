@@ -80,8 +80,8 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
             if idx == 11 {
                 button.setTitle("回退", forState: .Normal)
             }
-            button.setBackgroundImage(UIImage.imageWithColor(.whiteColor()), forState: .Normal)
-            button.setBackgroundImage(UIImage.imageWithColor(.lightGrayColor()), forState: .Highlighted)
+            button.setBackgroundImage(UIImage.ic_imageWithColor(.whiteColor()), forState: .Normal)
+            button.setBackgroundImage(UIImage.ic_imageWithColor(.lightGrayColor()), forState: .Highlighted)
             button.setTitleColor(.blackColor(), forState: .Normal)
             button.addTarget(self, action: #selector(tap(_:)), forControlEvents: .TouchUpInside)
             addSubview(button)
@@ -91,7 +91,7 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
     func tap(sender: UIButton) {
         if sender.currentTitle! == "回退" {
             if text.characters.count > 0 {
-                text = text.removeLastCharacter()
+                text = text.ic_removeLastCharacter()
             }
         } else {
             text += sender.currentTitle!
@@ -124,7 +124,7 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
 
 
 extension String {
-    mutating func removeLastCharacter() -> String {
+    mutating func ic_removeLastCharacter() -> String {
         self.removeAtIndex(self.endIndex.predecessor())
         return self
     }
@@ -132,7 +132,7 @@ extension String {
 
 extension UIImage {
     /** 生成纯色图片, 默认大小1x1, 在UITableViewCell默认左侧图标使用时需要手动设定大小占位 */
-    public class func imageWithColor(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+    public class func ic_imageWithColor(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
         UIGraphicsBeginImageContext(size)
         color.set()
         UIRectFill(CGRect(origin: CGPoint.zero, size: size))
