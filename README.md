@@ -1,5 +1,6 @@
 # IDCardKeyboard
 手动实现简单的生份证数字键盘
+![](https://camo.githubusercontent.com/7d97f558ccb8751e27fa65eeee94047955eba100/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a7861666332716159644d375a4f68655957614d6d51412e706e67)
 # 效果图展示
 ![](http://7xslr9.com1.z0.glb.clouddn.com/2016-5-30-IDCardKeyboard.gif) ![](http://7xslr9.com1.z0.glb.clouddn.com/2016-5-30-IDCardKeyboard2.gif)
 ### CocoaPods
