@@ -15,15 +15,15 @@ let CLEAR_NOTIFICTION = "CLEAR_NOTIFICTION"
 
 typealias InputTextClosure = (String)->()
 
-class KeyboardView: UIView, UITextFieldDelegate{
+public class KeyboardView: UIView, UITextFieldDelegate {
     static let shareKeyboard: KeyboardView = KeyboardView()
     var textFields = [UITextField]()
-    
+
     var inputTextClosure: InputTextClosure?
     var superView: UIView! = nil
-    
+
     var text = ""
-    
+
     override init(frame: CGRect) {
         let frameH = CGFloat(224.0)
 //        var frameH = CGFloat(224.0)
@@ -37,14 +37,14 @@ class KeyboardView: UIView, UITextFieldDelegate{
 //        default:
 //            break
 //        } 这个根据自己项目来适配
-        
-        let frame: CGRect = CGRectMake(0,0,SCREEN_WIDTH,frameH)
+
+        let frame: CGRect = CGRectMake(0, 0,SCREEN_WIDTH, frameH)
         super.init(frame: frame)
         self.backgroundColor = .lightGrayColor()
         customSubview(frame)
-        
+
     }
-    
+
     func addKeyboard(view: UIView, field: UITextField?) {
         superView = view
         KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
@@ -63,8 +63,8 @@ class KeyboardView: UIView, UITextFieldDelegate{
             }
         }
     }
-    
-   private func customSubview(frame: CGRect){
+
+   private func customSubview(frame: CGRect) {
         for idx in 0...11 {
             let button: UIButton = UIButton()
             button.frame = CGRectMake(CGFloat(idx%3) * (frame.width/3+marginvalue), CGFloat(idx/3) * (frame.height/4.0 + marginvalue), frame.width/3, frame.height/4.0)
@@ -87,8 +87,8 @@ class KeyboardView: UIView, UITextFieldDelegate{
             addSubview(button)
         }
     }
-    
-    func tap(sender:UIButton) {
+
+    func tap(sender: UIButton) {
         if sender.currentTitle! == "回退" {
             if !text.characters.isEmpty {
                 text = text.removeLastCharacter()
@@ -96,11 +96,11 @@ class KeyboardView: UIView, UITextFieldDelegate{
         } else {
             text += sender.currentTitle!
         }
-        
+
         editTextField(text)
- 
+
     }
-    
+
     func editTextField(text: String) {
         if textFields.count == 0 {
             return
@@ -111,13 +111,13 @@ class KeyboardView: UIView, UITextFieldDelegate{
             }
         }
     }
-    
-    func textFieldShouldClear(textField: UITextField) -> Bool {
+
+    public func textFieldShouldClear(textField: UITextField) -> Bool {
         text = ""
         return true
     }
- 
-    required init?(coder aDecoder: NSCoder) {
+
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
@@ -132,10 +132,10 @@ extension String {
 
 extension UIImage {
     /** 生成纯色图片, 默认大小1x1, 在UITableViewCell默认左侧图标使用时需要手动设定大小占位 */
-    public class func imageWithColor(color: UIColor, size: CGSize = CGSizeMake(1, 1)) -> UIImage {
+    public class func imageWithColor(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
         UIGraphicsBeginImageContext(size)
         color.set()
-        UIRectFill(CGRect(origin: CGPointZero, size: size))
+        UIRectFill(CGRect(origin: CGPoint.zero, size: size))
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image
@@ -151,4 +151,3 @@ extension UIImage {
  iphone6 : 258
  iphone6 plus: 271
  */
-
