@@ -15,7 +15,7 @@
 		3C64875B1CFC276600662391 /* IDCardKeyboardDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C64875A1CFC276600662391 /* IDCardKeyboardDemoTests.swift */; };
 		3C6487661CFC276600662391 /* IDCardKeyboardDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6487651CFC276600662391 /* IDCardKeyboardDemoUITests.swift */; };
 		3CFFA0BF1D05574700FF0AA6 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFFA0BD1D05574700FF0AA6 /* KeyboardNotification.swift */; };
-		3CFFA0C01D05574700FF0AA6 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFFA0BE1D05574700FF0AA6 /* KeyboardView.swift */; };
+		3CFFA0C01D05574700FF0AA6 /* IDCardKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFFA0BE1D05574700FF0AA6 /* IDCardKeyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 		3C6487651CFC276600662391 /* IDCardKeyboardDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardKeyboardDemoUITests.swift; sourceTree = "<group>"; };
 		3C6487671CFC276600662391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CFFA0BD1D05574700FF0AA6 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
-		3CFFA0BE1D05574700FF0AA6 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		3CFFA0BE1D05574700FF0AA6 /* IDCardKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDCardKeyboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				3CFFA0BD1D05574700FF0AA6 /* KeyboardNotification.swift */,
-				3CFFA0BE1D05574700FF0AA6 /* KeyboardView.swift */,
+				3CFFA0BE1D05574700FF0AA6 /* IDCardKeyboard.swift */,
 			);
 			name = IDCardKeyboard;
 			path = ../IDCardKeyboard;
@@ -272,7 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CFFA0BF1D05574700FF0AA6 /* KeyboardNotification.swift in Sources */,
-				3CFFA0C01D05574700FF0AA6 /* KeyboardView.swift in Sources */,
+				3CFFA0C01D05574700FF0AA6 /* IDCardKeyboard.swift in Sources */,
 				3C6487481CFC276600662391 /* ViewController.swift in Sources */,
 				3C6487461CFC276600662391 /* AppDelegate.swift in Sources */,
 			);

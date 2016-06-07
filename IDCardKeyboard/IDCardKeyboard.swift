@@ -15,8 +15,8 @@ let CLEAR_NOTIFICTION = "CLEAR_NOTIFICTION"
 
 typealias InputTextClosure = (String)->()
 
-public class KeyboardView: UIView, UITextFieldDelegate {
-    static let shareKeyboard: KeyboardView = KeyboardView()
+public class IDCardKeyboard: UIView, UITextFieldDelegate {
+    public static let shareKeyboard: IDCardKeyboard = IDCardKeyboard()
     var textFields = [UITextField]()
 
     var inputTextClosure: InputTextClosure?
@@ -26,26 +26,26 @@ public class KeyboardView: UIView, UITextFieldDelegate {
 
     override init(frame: CGRect) {
         let frameH = CGFloat(224.0)
-//        var frameH = CGFloat(224.0)
-//        switch Device() {
-//        case .iPhone5,.iPhone5s,.iPhone5c:
-//            frameH = CGFloat(224.0)
-//        case .iPhone6,.iPhone6s:
-//            frameH = CGFloat(258.0)
-//        case .iPhone6Plus,.iPhone6sPlus:
-//            frameH = CGFloat(271.0)
-//        default:
-//            break
-//        } 这个根据自己项目来适配
+        //        var frameH = CGFloat(224.0)
+        //        switch Device() {
+        //        case .iPhone5,.iPhone5s,.iPhone5c:
+        //            frameH = CGFloat(224.0)
+        //        case .iPhone6,.iPhone6s:
+        //            frameH = CGFloat(258.0)
+        //        case .iPhone6Plus,.iPhone6sPlus:
+        //            frameH = CGFloat(271.0)
+        //        default:
+        //            break
+        //        } 这个根据自己项目来适配
 
-        let frame: CGRect = CGRectMake(0, 0,SCREEN_WIDTH, frameH)
+        let frame: CGRect = CGRectMake(0, 0, SCREEN_WIDTH, frameH)
         super.init(frame: frame)
         self.backgroundColor = .lightGrayColor()
         customSubview(frame)
 
     }
 
-    func addKeyboard(view: UIView, field: UITextField?) {
+    public func addKeyboard(view: UIView, field: UITextField?) {
         superView = view
         KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
         if field != nil {
@@ -64,7 +64,7 @@ public class KeyboardView: UIView, UITextFieldDelegate {
         }
     }
 
-   private func customSubview(frame: CGRect) {
+    private func customSubview(frame: CGRect) {
         for idx in 0...11 {
             let button: UIButton = UIButton()
             button.frame = CGRectMake(CGFloat(idx%3) * (frame.width/3+marginvalue), CGFloat(idx/3) * (frame.height/4.0 + marginvalue), frame.width/3, frame.height/4.0)
@@ -90,7 +90,7 @@ public class KeyboardView: UIView, UITextFieldDelegate {
 
     func tap(sender: UIButton) {
         if sender.currentTitle! == "回退" {
-            if !text.characters.isEmpty {
+            if text.characters.count > 0 {
                 text = text.removeLastCharacter()
             }
         } else {
