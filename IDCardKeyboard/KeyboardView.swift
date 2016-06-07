@@ -90,7 +90,7 @@ class KeyboardView: UIView, UITextFieldDelegate{
     
     func tap(sender:UIButton) {
         if sender.currentTitle! == "回退" {
-            if text.characters.count > 0 {
+            if !text.characters.isEmpty {
                 text = text.removeLastCharacter()
             }
         } else {
