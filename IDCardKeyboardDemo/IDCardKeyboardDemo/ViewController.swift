@@ -27,8 +27,6 @@ class ViewController: UIViewController {
         fieldNext.placeholder = "nextField"
         view .addSubview(fieldNext)
         textField.becomeFirstResponder()
-        
-        let thirdField = 
         IDCardKeyboard.shareKeyboard.addKeyboard(view, field: textField)//一句代码搞定数字键盘
     }
 

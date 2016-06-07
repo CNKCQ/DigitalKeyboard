@@ -56,7 +56,7 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
         }
         for view in superView.subviews {
             if view.isKindOfClass(UITextField) {
-                let textField: UITextField = view as! UITextField
+                let textField = view as! UITextField
                 textField.delegate = self
                 textFields.append(textField)
                 textField.inputView = self
@@ -66,7 +66,7 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
 
     private func customSubview(frame: CGRect) {
         for idx in 0...11 {
-            let button: UIButton = UIButton()
+            let button = UIButton()
             button.frame = CGRectMake(CGFloat(idx%3) * (frame.width/3+marginvalue), CGFloat(idx/3) * (frame.height/4.0 + marginvalue), frame.width/3, frame.height/4.0)
             button.backgroundColor = .whiteColor()
             button.tag = idx
