@@ -45,7 +45,7 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
 
     }
 
-    public func addKeyboard(view: UIView, field: UITextField?) {
+    public func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
         KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
         if field != nil {
