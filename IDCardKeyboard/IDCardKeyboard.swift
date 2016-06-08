@@ -12,18 +12,12 @@ let marginvalue = CGFloat(0.5)
 let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
 let CLEAR_NOTIFICTION = "CLEAR_NOTIFICTION"
 
-
-typealias InputTextClosure = (String)->()
-
 public class IDCardKeyboard: UIView, UITextFieldDelegate {
     public static let shareKeyboard: IDCardKeyboard = IDCardKeyboard()
     var textFields = [UITextField]()
-
-    var inputTextClosure: InputTextClosure?
     var superView: UIView! = nil
-
     var text = ""
-
+    
     override init(frame: CGRect) {
         let frameH = CGFloat(224.0)
         //        var frameH = CGFloat(224.0)
@@ -37,14 +31,14 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
         //        default:
         //            break
         //        } 这个根据自己项目来适配
-
+        
         let frame: CGRect = CGRectMake(0, 0, SCREEN_WIDTH, frameH)
         super.init(frame: frame)
         self.backgroundColor = .lightGrayColor()
         customSubview(frame)
-
+        
     }
-
+    
     public func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
         KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
@@ -63,7 +57,7 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
             }
         }
     }
-
+    
     private func customSubview(frame: CGRect) {
         for idx in 0...11 {
             let button = UIButton()
@@ -87,8 +81,9 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
             addSubview(button)
         }
     }
-
+    
     func tap(sender: UIButton) {
+        text = (firstResponder()?.text)!
         if sender.currentTitle! == "回退" {
             if text.characters.count > 0 {
                 text = text.ic_removeLastCharacter()
@@ -96,29 +91,40 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
         } else {
             text += sender.currentTitle!
         }
-
+        
         editTextField(text)
-
+        
     }
-
+    
     func editTextField(text: String) {
         if textFields.count == 0 {
             return
         }
+        firstResponder()?.text = text
+    }
+    
+    func firstResponder() -> UITextField? {
+        var firstResponder: UITextField?
+        
         for field in textFields {
-            if field.isFirstResponder() == true {
-                field.text = text
+            if field.isFirstResponder() {
+                firstResponder = field
             }
         }
+        return firstResponder
     }
-
+    
     public func textFieldShouldClear(textField: UITextField) -> Bool {
         text = ""
         return true
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        text = ""
     }
 }
 

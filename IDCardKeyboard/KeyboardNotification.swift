@@ -26,7 +26,6 @@ class KeyboardNotification: AnyObject {
     }
 
     @objc func keyboardWillShowNotify(notifiction: NSNotification) {
-
         let info: NSDictionary = notifiction.userInfo!
         let value: NSValue = info.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
         let duration: Double = (info.objectForKey(UIKeyboardAnimationDurationUserInfoKey)?.doubleValue)!
