@@ -6,6 +6,7 @@
 //  Copyright © 2016年 KingCQ. All rights reserved.
 //
 
+import DeviceKit
 import UIKit
 
 let marginvalue = CGFloat(0.5)
@@ -17,28 +18,29 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
     var textFields = [UITextField]()
     var superView: UIView! = nil
     var text = ""
-    
+
     override init(frame: CGRect) {
-        let frameH = CGFloat(224.0)
-        //        var frameH = CGFloat(224.0)
-        //        switch Device() {
-        //        case .iPhone5,.iPhone5s,.iPhone5c:
-        //            frameH = CGFloat(224.0)
-        //        case .iPhone6,.iPhone6s:
-        //            frameH = CGFloat(258.0)
-        //        case .iPhone6Plus,.iPhone6sPlus:
-        //            frameH = CGFloat(271.0)
-        //        default:
-        //            break
-        //        } 这个根据自己项目来适配
-        
+                var frameH = CGFloat(224.0)
+                switch Device() {
+                case .iPhone4, .iPhone4s:
+                    frameH = CGFloat(209.0)
+                case .iPhone5, .iPhone5s, .iPhone5c:
+                    frameH = CGFloat(224.0)
+                case .iPhone6, .iPhone6s:
+                    frameH = CGFloat(258.0)
+                case .iPhone6Plus, .iPhone6sPlus:
+                    frameH = CGFloat(271.0)
+                default:
+                    break
+                }
+
         let frame: CGRect = CGRectMake(0, 0, SCREEN_WIDTH, frameH)
         super.init(frame: frame)
         self.backgroundColor = .lightGrayColor()
         customSubview(frame)
-        
+
     }
-    
+
     public func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
         KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
@@ -57,7 +59,7 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
             }
         }
     }
-    
+
     private func customSubview(frame: CGRect) {
         for idx in 0...11 {
             let button = UIButton()
@@ -81,7 +83,7 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
             addSubview(button)
         }
     }
-    
+
     func tap(sender: UIButton) {
         text = (firstResponder()?.text)!
         if sender.currentTitle! == "回退" {
@@ -91,21 +93,21 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
         } else {
             text += sender.currentTitle!
         }
-        
+
         editTextField(text)
-        
+
     }
-    
+
     func editTextField(text: String) {
         if textFields.count == 0 {
             return
         }
         firstResponder()?.text = text
     }
-    
+
     func firstResponder() -> UITextField? {
         var firstResponder: UITextField?
-        
+
         for field in textFields {
             if field.isFirstResponder() {
                 firstResponder = field
@@ -113,16 +115,16 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
         }
         return firstResponder
     }
-    
+
     public func textFieldShouldClear(textField: UITextField) -> Bool {
         text = ""
         return true
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     deinit {
         text = ""
     }
@@ -147,7 +149,6 @@ extension UIImage {
         return image
     }
 }
-
 
 
 
