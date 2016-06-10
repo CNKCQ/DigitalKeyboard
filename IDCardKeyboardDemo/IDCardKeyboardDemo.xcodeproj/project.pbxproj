@@ -15,6 +15,7 @@
 		3C6487501CFC276600662391 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C64874E1CFC276600662391 /* LaunchScreen.storyboard */; };
 		3C64875B1CFC276600662391 /* IDCardKeyboardDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C64875A1CFC276600662391 /* IDCardKeyboardDemoTests.swift */; };
 		3C6487661CFC276600662391 /* IDCardKeyboardDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6487651CFC276600662391 /* IDCardKeyboardDemoUITests.swift */; };
+		3CBD9C831D0AB35E00D87C41 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD9C821D0AB35E00D87C41 /* Extensions.swift */; };
 		3CFFA0BF1D05574700FF0AA6 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFFA0BD1D05574700FF0AA6 /* KeyboardNotification.swift */; };
 		3CFFA0C01D05574700FF0AA6 /* IDCardKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFFA0BE1D05574700FF0AA6 /* IDCardKeyboard.swift */; };
 		61F51E7662D149D1977B7C6F /* Pods_IDCardKeyboardDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F35DDDD2F16BC252F31BC7F /* Pods_IDCardKeyboardDemo.framework */; };
@@ -55,6 +56,7 @@
 		3C6487611CFC276600662391 /* IDCardKeyboardDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDCardKeyboardDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6487651CFC276600662391 /* IDCardKeyboardDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardKeyboardDemoUITests.swift; sourceTree = "<group>"; };
 		3C6487671CFC276600662391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CBD9C821D0AB35E00D87C41 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3CFFA0BD1D05574700FF0AA6 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
 		3CFFA0BE1D05574700FF0AA6 /* IDCardKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDCardKeyboard.swift; sourceTree = "<group>"; };
 		81BE1E5C346F7DCA6721ADEF /* Pods-IDCardKeyboardDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDCardKeyboardDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IDCardKeyboardDemoTests/Pods-IDCardKeyboardDemoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				3CFFA0BD1D05574700FF0AA6 /* KeyboardNotification.swift */,
 				3CFFA0BE1D05574700FF0AA6 /* IDCardKeyboard.swift */,
+				3CBD9C821D0AB35E00D87C41 /* Extensions.swift */,
 			);
 			name = IDCardKeyboard;
 			path = ../IDCardKeyboard;
@@ -442,6 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CBD9C831D0AB35E00D87C41 /* Extensions.swift in Sources */,
 				3CFFA0BF1D05574700FF0AA6 /* KeyboardNotification.swift in Sources */,
 				3CFFA0C01D05574700FF0AA6 /* IDCardKeyboard.swift in Sources */,
 				3C6487481CFC276600662391 /* ViewController.swift in Sources */,

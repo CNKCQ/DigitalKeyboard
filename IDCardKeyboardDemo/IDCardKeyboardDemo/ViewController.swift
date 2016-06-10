@@ -21,13 +21,15 @@ class ViewController: UIViewController {
         textField.clearButtonMode = .WhileEditing
         textField.becomeFirstResponder()
         view.addSubview(textField)
-
+        textField.keyboardType = .DecimalPad
         fieldNext.frame = CGRect(x: 80, y: 500, width: 160, height: 30)
         fieldNext.borderStyle = .RoundedRect
         fieldNext.placeholder = "nextField"
+        
         view .addSubview(fieldNext)
         textField.becomeFirstResponder()
-        IDCardKeyboard.shareKeyboard.addKeyboard(view, field: textField)//一句代码搞定数字键盘
+        textField.idcardKeyboard(view)//一句代码搞定数字键盘
+
     }
 
 
