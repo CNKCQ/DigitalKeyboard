@@ -53,7 +53,7 @@ $ pod install
         fieldNext.placeholder = "nextField"
         view .addSubview(fieldNext)
         
-        KeyboardView.shareKeyboard.addKeyboard(view)//一句代码搞定数字键盘
+        textField.idcardKeyboard(view)//一句代码搞定数字键盘
 
         
     }
