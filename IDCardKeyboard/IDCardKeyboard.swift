@@ -13,8 +13,11 @@ let marginvalue = CGFloat(0.5)
 let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
 let CLEAR_NOTIFICTION = "CLEAR_NOTIFICTION"
 
-public class IDCardKeyboard: UIView, UITextFieldDelegate {
+public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedback {
     public static let shareKeyboard: IDCardKeyboard = IDCardKeyboard()
+    public var enableInputClicksWhenVisible: Bool {
+        return true
+    }
     var textFields = [UITextField]()
     var superView: UIView! = nil
     var text = ""
@@ -44,6 +47,7 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
     public func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
         KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
+
         if field != nil {
             textFields.append(field!)
             field!.inputView = self
@@ -74,7 +78,8 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
                 button.setTitle("0", forState: .Normal)
             }
             if idx == 11 {
-                button.setTitle("回退", forState: .Normal)
+                button.setTitle("", forState: .Normal)
+                button.setImage(UIImage(named: "Keyboard_Backspace"), forState: .Normal)
             }
             button.setBackgroundImage(UIImage.ic_imageWithColor(.whiteColor()), forState: .Normal)
             button.setBackgroundImage(UIImage.ic_imageWithColor(.lightGrayColor()), forState: .Highlighted)
@@ -86,7 +91,7 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate {
 
     func tap(sender: UIButton) {
         text = (firstResponder()?.text)!
-        if sender.currentTitle! == "回退" {
+        if sender.tag == 11 {
             if text.characters.count > 0 {
                 text = text.ic_removeLastCharacter()
             }

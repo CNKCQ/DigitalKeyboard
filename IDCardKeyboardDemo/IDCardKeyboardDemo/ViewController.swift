@@ -25,10 +25,11 @@ class ViewController: UIViewController {
         fieldNext.frame = CGRect(x: 80, y: 500, width: 160, height: 30)
         fieldNext.borderStyle = .RoundedRect
         fieldNext.placeholder = "nextField"
-        
+
         view .addSubview(fieldNext)
         textField.becomeFirstResponder()
         textField.idcardKeyboard(view)//一句代码搞定数字键盘
+        fieldNext.idcardKeyboard(view)
 
     }
 
