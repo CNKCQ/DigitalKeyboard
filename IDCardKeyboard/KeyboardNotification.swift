@@ -30,9 +30,7 @@ class KeyboardNotification: AnyObject {
         let value: NSValue = info.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
         let duration: Double = (info.objectForKey(UIKeyboardAnimationDurationUserInfoKey)?.doubleValue)!
         let keyboardSize = value.CGRectValue().size
-
         let firstResponderView = UIView.getFirstResponderAtView(superView!)
-
         if firstResponderView != nil {
             let bottomY = caculateAbsoluteBottomY(firstResponderView!) + 20
             if bottomY + keyboardSize.height > UIScreen.mainScreen().bounds.size.height {
@@ -81,7 +79,6 @@ class KeyboardNotification: AnyObject {
             }
             bottomY += subView.frame.origin.y
         }
-
         bottomY += superViewTopMargin!
         if superView!.isKindOfClass(UIScrollView) == true {
             let supV = superView as! UIScrollView

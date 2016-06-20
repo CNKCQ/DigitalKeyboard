@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "IDCardKeyboard"
-  s.version      = "1.0.6"
+  s.version      = "1.0.8"
   s.summary      = "A custom keyboard of IDCardKeyboard."
 
   # This description is used to generate tags and improve search results.
@@ -108,7 +108,7 @@ Pod::Spec.new do |s|
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
   s.resource_bundles = {
-  'IDCardKeyboard' => ['IDCardKeyboard/Images/*.png']
+  'IDCardKeyboard' => ['IDCardKeyboard/Resources/**/*.png']
 }
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"

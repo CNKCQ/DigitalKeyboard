@@ -20,7 +20,6 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
     }
     var textFields = [UITextField]()
     var superView: UIView! = nil
-    var text = ""
 
     override init(frame: CGRect) {
         var frameH = CGFloat(224.0)
@@ -85,10 +84,10 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
                     if let bundle = NSBundle(URL: bundleURL) {
                         image = UIImage(named: "Keyboard_Backspace", inBundle: bundle, compatibleWithTraitCollection: nil)
                     } else {
-                        assertionFailure("Could not load the bundle")
+                        image = UIImage(named: "Keyboard_Backspace")
                     }
                 } else {
-                    assertionFailure("Could not create a path to the bundle")
+                        image = UIImage(named: "Keyboard_Backspace")
                 }
                 if image != nil {
                     button.setTitle("", forState: .Normal)
