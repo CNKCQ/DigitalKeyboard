@@ -4,12 +4,6 @@
 
 import UIKit
 
-extension String {
-    mutating func ic_removeLastCharacter() -> String {
-        self.removeAtIndex(self.endIndex.predecessor())
-        return self
-    }
-}
 
 extension UIImage {
     /** 生成纯色图片, 默认大小1x1, 在UITableViewCell默认左侧图标使用时需要手动设定大小占位 */

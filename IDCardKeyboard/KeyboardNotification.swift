@@ -68,8 +68,6 @@ class KeyboardNotification: AnyObject {
         }
     }
 
-
-
     func caculateAbsoluteBottomY(view: UIView) -> CGFloat {
 
         var bottomY = CGRectGetMaxY(view.frame)

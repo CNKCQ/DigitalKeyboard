@@ -90,17 +90,11 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
     }
 
     func tap(sender: UIButton) {
-        text = (firstResponder()?.text)!
         if sender.tag == 11 {
-            if text.characters.count > 0 {
-                text = text.ic_removeLastCharacter()
-            }
+            firstResponder()?.deleteBackward()
         } else {
-            text += sender.currentTitle!
+            firstResponder()?.insertText(sender.currentTitle!)
         }
-
-        editTextField(text)
-
     }
 
     func editTextField(text: String) {
@@ -112,7 +106,6 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
 
     func firstResponder() -> UITextField? {
         var firstResponder: UITextField?
-
         for field in textFields {
             if field.isFirstResponder() {
                 firstResponder = field
@@ -121,21 +114,10 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
         return firstResponder
     }
 
-    public func textFieldShouldClear(textField: UITextField) -> Bool {
-        text = ""
-        return true
-    }
-
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    deinit {
-        text = ""
-    }
 }
-
-
 
 
 /*
