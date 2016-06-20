@@ -1,8 +1,13 @@
+
+# IDCardKeyboard
+[![CI Status](http://img.shields.io/travis/kishikawakatsumi/IDCardKeyboard.svg?style=flat)](https://travis-ci.org/kishikawakatsumi/IDCardKeyboard)
+[![Version](https://img.shields.io/cocoapods/v/IDCardKeyboard.svg?style=flat)](http://cocoadocs.org/docsets/IDCardKeyboard)
+[![Platform](https://img.shields.io/cocoapods/p/IDCardKeyboard.svg?style=flat)](http://cocoadocs.org/docsets/IDCardKeyboard)
 ![](https://camo.githubusercontent.com/7d97f558ccb8751e27fa65eeee94047955eba100/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a7861666332716159644d375a4f68655957614d6d51412e706e67)
 # IDCardKeyboard
-手动实现简单的生份证数字键盘
-# 效果图展示
-![](http://7xslr9.com1.z0.glb.clouddn.com/2016-5-30-IDCardKeyboard.gif) ![](http://7xslr9.com1.z0.glb.clouddn.com/2016-5-30-IDCardKeyboard2.gif)
+A custom digital keyboard for idcard
+##### :eyes: See also:
+![](http://7xslr9.com1.z0.glb.clouddn.com/IDCardKeyboard.gif) 
 ### CocoaPods
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
@@ -21,7 +26,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'IDCardKeyboard', '~> 1.0.2'
+    pod 'IDCardKeyboard', '~> 1.0.8'
 end
 ```
 
@@ -31,7 +36,7 @@ Then, run the following command:
 $ pod install
 ```
 
-# Usage
+## :book: Usage
   ``` bash
   class ViewController: UIViewController {
     let textField: UITextField = UITextField()
@@ -66,4 +71,4 @@ $ pod install
 }
 
   ```
-# Keywork: Swift 2.2
+  ### :key: Basics  Swift 2.2
