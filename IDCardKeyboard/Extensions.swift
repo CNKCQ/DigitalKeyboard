@@ -17,8 +17,8 @@ extension UIImage {
     }
 }
 
-extension UITextField {
-    func idcardKeyboard(view: UIView) {
+public extension UITextField {
+    public func idcardKeyboard(view: UIView) {
         IDCardKeyboard.shareKeyboard.addKeyboard(view, field: self)
     }
 }
