@@ -23,19 +23,19 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
     var text = ""
 
     override init(frame: CGRect) {
-                var frameH = CGFloat(224.0)
-                switch Device() {
-                case .iPhone4, .iPhone4s:
-                    frameH = CGFloat(209.0)
-                case .iPhone5, .iPhone5s, .iPhone5c:
-                    frameH = CGFloat(224.0)
-                case .iPhone6, .iPhone6s:
-                    frameH = CGFloat(258.0)
-                case .iPhone6Plus, .iPhone6sPlus:
-                    frameH = CGFloat(271.0)
-                default:
-                    break
-                }
+        var frameH = CGFloat(224.0)
+        switch Device() {
+        case .iPhone4, .iPhone4s:
+            frameH = CGFloat(209.0)
+        case .iPhone5, .iPhone5s, .iPhone5c:
+            frameH = CGFloat(224.0)
+        case .iPhone6, .iPhone6s:
+            frameH = CGFloat(258.0)
+        case .iPhone6Plus, .iPhone6sPlus:
+            frameH = CGFloat(271.0)
+        default:
+            break
+        }
 
         let frame: CGRect = CGRectMake(0, 0, SCREEN_WIDTH, frameH)
         super.init(frame: frame)
@@ -78,8 +78,24 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
                 button.setTitle("0", forState: .Normal)
             }
             if idx == 11 {
-                button.setTitle("", forState: .Normal)
-                button.setImage(UIImage(named: "Keyboard_Backspace"), forState: .Normal)
+                /// so https://the-nerd.be/2015/08/07/load-assets-from-bundle-resources-in-cocoapods/
+                var image: UIImage?
+                let podBundle = NSBundle(forClass: self.classForCoder)
+                if let bundleURL = podBundle.URLForResource("IDCardKeyboard", withExtension: "bundle") {
+                    if let bundle = NSBundle(URL: bundleURL) {
+                        image = UIImage(named: "Keyboard_Backspace", inBundle: bundle, compatibleWithTraitCollection: nil)
+                    } else {
+                        assertionFailure("Could not load the bundle")
+                    }
+                } else {
+                    assertionFailure("Could not create a path to the bundle")
+                }
+                if image != nil {
+                    button.setTitle("", forState: .Normal)
+                    button.setImage(image, forState: .Normal)
+                } else {
+                    button.setTitle("del", forState: .Normal)
+                }
             }
             button.setBackgroundImage(UIImage.ic_imageWithColor(.whiteColor()), forState: .Normal)
             button.setBackgroundImage(UIImage.ic_imageWithColor(.lightGrayColor()), forState: .Highlighted)
