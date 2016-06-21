@@ -16,8 +16,8 @@ class KeyboardNotification: AnyObject {
     var keyboardShown: Bool = false
 
     init() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShowNotify(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHidderNotify(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(keyboardWillShowNotify), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(keyboardWillHidderNotify), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
     func addKeyboardNotificationForSuperView(view: UIView, margin: CGFloat) {
@@ -27,20 +27,20 @@ class KeyboardNotification: AnyObject {
 
     @objc func keyboardWillShowNotify(notifiction: NSNotification) {
         let info: NSDictionary = notifiction.userInfo!
-        let value: NSValue = info.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
-        let duration: Double = (info.objectForKey(UIKeyboardAnimationDurationUserInfoKey)?.doubleValue)!
-        let keyboardSize = value.CGRectValue().size
-        let firstResponderView = UIView.getFirstResponderAtView(superView!)
+        let value: NSValue = info.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let duration: Double = (info.object(forKey: UIKeyboardAnimationDurationUserInfoKey)?.doubleValue)!
+        let keyboardSize = value.cgRectValue().size
+        let firstResponderView = UIView.getFirstResponderAtView(view: superView!)
         if firstResponderView != nil {
-            let bottomY = caculateAbsoluteBottomY(firstResponderView!) + 20
-            if bottomY + keyboardSize.height > UIScreen.mainScreen().bounds.size.height {
-                let length = bottomY + keyboardSize.height - UIScreen.mainScreen().bounds.size.height
+            let bottomY = caculateAbsoluteBottomY(view: firstResponderView!) + 20
+            if bottomY + keyboardSize.height > UIScreen.main().bounds.size.height {
+                let length = bottomY + keyboardSize.height - UIScreen.main().bounds.size.height
                 // 记录下移动前的初始位置，方便后面还原
                 if keyboardShown == false {
                     keyboardShown = true
                     superOriginFrame = superView!.frame
                 }
-                UIView.animateWithDuration(duration, animations: {
+                UIView.animate(withDuration: duration, animations: {
                     var frame = (self.superView?.frame)!
                     frame.origin.y = (self.superOriginFrame.origin.y) - length
                     self.superView?.frame = frame
@@ -53,12 +53,12 @@ class KeyboardNotification: AnyObject {
 
     @objc func keyboardWillHidderNotify(notifiction: NSNotification) {
         // 键盘没有遮挡输入框
-        if CGRectEqualToRect(superOriginFrame, CGRect.zero) {
+        if superOriginFrame.equalTo(CGRect.zero) {
             return
         }
         let info: NSDictionary = notifiction.userInfo!
-        let duration = (info.objectForKey(UIKeyboardAnimationDurationUserInfoKey)?.doubleValue)!
-        UIView.animateWithDuration(duration, animations: {
+        let duration = (info.object(forKey: UIKeyboardAnimationDurationUserInfoKey)?.doubleValue)!
+        UIView.animate(withDuration: duration, animations: {
             self.superView?.frame = self.superOriginFrame
             }) { (finished) in
                 self.keyboardShown = false
@@ -68,19 +68,21 @@ class KeyboardNotification: AnyObject {
 
     func caculateAbsoluteBottomY(view: UIView) -> CGFloat {
 
-        var bottomY = CGRectGetMaxY(view.frame)
+        var bottomY = view.frame.maxY
         var subView = view
         while subView.superview != superView {
             subView = subView.superview!
             // 如果是滚动视图，应该计算偏移量
-            if subView.isKindOfClass(UIScrollView) == true {
+            
+            if subView.isKind(of: UIScrollView.self) {
                 let subView = subView as! UIScrollView
                 bottomY -= subView.contentOffset.y
             }
             bottomY += subView.frame.origin.y
         }
         bottomY += superViewTopMargin!
-        if superView!.isKindOfClass(UIScrollView) == true {
+        
+        if subView.isKind(of: UIScrollView.self) {
             let supV = superView as! UIScrollView
             bottomY -= supV.contentOffset.y
         }
@@ -88,8 +90,8 @@ class KeyboardNotification: AnyObject {
     }
 
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default().removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default().removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
     }
 
@@ -105,7 +107,7 @@ extension UIView {
         }
         // 没有找到，继续子view寻找
         for subView in view.subviews {
-            let firstResponderView = getFirstResponderAtView(subView)
+            let firstResponderView = getFirstResponderAtView(view: subView)
             if firstResponderView != nil && firstResponderView!.isFirstResponder() == true {
                 return firstResponderView!
             }

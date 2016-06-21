@@ -20,7 +20,6 @@
 		3CBD9C831D0AB35E00D87C41 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD9C821D0AB35E00D87C41 /* Extensions.swift */; };
 		3CFFA0BF1D05574700FF0AA6 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFFA0BD1D05574700FF0AA6 /* KeyboardNotification.swift */; };
 		3CFFA0C01D05574700FF0AA6 /* IDCardKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFFA0BE1D05574700FF0AA6 /* IDCardKeyboard.swift */; };
-		61F51E7662D149D1977B7C6F /* Pods_IDCardKeyboardDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F35DDDD2F16BC252F31BC7F /* Pods_IDCardKeyboardDemo.framework */; };
 		6B4601474534EE2E766C8558 /* Pods_IDCardKeyboardDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4E51B06C4E6547DB62E59B /* Pods_IDCardKeyboardDemoUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +43,6 @@
 /* Begin PBXFileReference section */
 		0A4E51B06C4E6547DB62E59B /* Pods_IDCardKeyboardDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IDCardKeyboardDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F35DDDD2F16BC252F31BC7F /* Pods_IDCardKeyboardDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IDCardKeyboardDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		338B749455E6EE7567587CC8 /* Pods-IDCardKeyboardDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDCardKeyboardDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IDCardKeyboardDemoUITests/Pods-IDCardKeyboardDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3C2A4F8F1D17E10600D2EC36 /* Keyboard_Backspace@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_Backspace@2x.png"; sourceTree = "<group>"; };
 		3C2A4F901D17E10600D2EC36 /* Keyboard_Backspace@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_Backspace@3x.png"; sourceTree = "<group>"; };
 		3C6487421CFC276600662391 /* IDCardKeyboardDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDCardKeyboardDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,12 +61,7 @@
 		3CBD9C821D0AB35E00D87C41 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3CFFA0BD1D05574700FF0AA6 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
 		3CFFA0BE1D05574700FF0AA6 /* IDCardKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDCardKeyboard.swift; sourceTree = "<group>"; };
-		81BE1E5C346F7DCA6721ADEF /* Pods-IDCardKeyboardDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDCardKeyboardDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IDCardKeyboardDemoTests/Pods-IDCardKeyboardDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		B3B97F4A4522A96BF3910958 /* Pods_IDCardKeyboardDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IDCardKeyboardDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCB62D86EF84A996AD6AA163 /* Pods-IDCardKeyboardDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDCardKeyboardDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-IDCardKeyboardDemo/Pods-IDCardKeyboardDemo.release.xcconfig"; sourceTree = "<group>"; };
-		CB3D4FA6D81EFDB015FCADBC /* Pods-IDCardKeyboardDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDCardKeyboardDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IDCardKeyboardDemoTests/Pods-IDCardKeyboardDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EA2E31EB5D7A41FC21DB8F1E /* Pods-IDCardKeyboardDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDCardKeyboardDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IDCardKeyboardDemoUITests/Pods-IDCardKeyboardDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		FB0D04ECB190EFF65F539643 /* Pods-IDCardKeyboardDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDCardKeyboardDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IDCardKeyboardDemo/Pods-IDCardKeyboardDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61F51E7662D149D1977B7C6F /* Pods_IDCardKeyboardDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +116,6 @@
 				3C6487591CFC276600662391 /* IDCardKeyboardDemoTests */,
 				3C6487641CFC276600662391 /* IDCardKeyboardDemoUITests */,
 				3C6487431CFC276600662391 /* Products */,
-				8B8E5FB1BE10B49CE3DFB41A /* Pods */,
 				4CD18D9A78005BFACA0E9FED /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -192,19 +183,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8B8E5FB1BE10B49CE3DFB41A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				FB0D04ECB190EFF65F539643 /* Pods-IDCardKeyboardDemo.debug.xcconfig */,
-				BCB62D86EF84A996AD6AA163 /* Pods-IDCardKeyboardDemo.release.xcconfig */,
-				CB3D4FA6D81EFDB015FCADBC /* Pods-IDCardKeyboardDemoTests.debug.xcconfig */,
-				81BE1E5C346F7DCA6721ADEF /* Pods-IDCardKeyboardDemoTests.release.xcconfig */,
-				EA2E31EB5D7A41FC21DB8F1E /* Pods-IDCardKeyboardDemoUITests.debug.xcconfig */,
-				338B749455E6EE7567587CC8 /* Pods-IDCardKeyboardDemoUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -212,12 +190,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C64876A1CFC276600662391 /* Build configuration list for PBXNativeTarget "IDCardKeyboardDemo" */;
 			buildPhases = (
-				A9DCAB975C54DE6BD966F3DD /* 📦 Check Pods Manifest.lock */,
 				3C64873E1CFC276600662391 /* Sources */,
 				3C64873F1CFC276600662391 /* Frameworks */,
 				3C6487401CFC276600662391 /* Resources */,
-				81B4600FFD91722CFC02EBBB /* 📦 Embed Pods Frameworks */,
-				665A5674017901593F4AFA8D /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -372,21 +347,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		665A5674017901593F4AFA8D /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IDCardKeyboardDemo/Pods-IDCardKeyboardDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6E350BD065D31AA0354A37F8 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,37 +362,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IDCardKeyboardDemoTests/Pods-IDCardKeyboardDemoTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		81B4600FFD91722CFC02EBBB /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IDCardKeyboardDemo/Pods-IDCardKeyboardDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		914CD27634625143D20AD5C9 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		A9DCAB975C54DE6BD966F3DD /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -615,11 +545,10 @@
 		};
 		3C64876B1CFC276600662391 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB0D04ECB190EFF65F539643 /* Pods-IDCardKeyboardDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = IDCardKeyboardDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.KingCQ.IDCardKeyboardDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -628,11 +557,10 @@
 		};
 		3C64876C1CFC276600662391 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCB62D86EF84A996AD6AA163 /* Pods-IDCardKeyboardDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = IDCardKeyboardDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.KingCQ.IDCardKeyboardDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -641,7 +569,6 @@
 		};
 		3C64876E1CFC276600662391 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CB3D4FA6D81EFDB015FCADBC /* Pods-IDCardKeyboardDemoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = IDCardKeyboardDemoTests/Info.plist;
@@ -654,7 +581,6 @@
 		};
 		3C64876F1CFC276600662391 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81BE1E5C346F7DCA6721ADEF /* Pods-IDCardKeyboardDemoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = IDCardKeyboardDemoTests/Info.plist;
@@ -667,7 +593,6 @@
 		};
 		3C6487711CFC276600662391 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA2E31EB5D7A41FC21DB8F1E /* Pods-IDCardKeyboardDemoUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = IDCardKeyboardDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -679,7 +604,6 @@
 		};
 		3C6487721CFC276600662391 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 338B749455E6EE7567587CC8 /* Pods-IDCardKeyboardDemoUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = IDCardKeyboardDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

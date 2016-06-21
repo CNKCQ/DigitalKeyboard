@@ -6,11 +6,11 @@
 //  Copyright © 2016年 KingCQ. All rights reserved.
 //
 
-import DeviceKit
+
 import UIKit
 
 let marginvalue = CGFloat(0.5)
-let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
+let SCREEN_WIDTH = UIScreen.main().bounds.size.width
 let CLEAR_NOTIFICTION = "CLEAR_NOTIFICTION"
 
 public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedback {
@@ -22,30 +22,17 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
     var superView: UIView! = nil
 
     override init(frame: CGRect) {
-        var frameH = CGFloat(224.0)
-        switch Device() {
-        case .iPhone4, .iPhone4s:
-            frameH = CGFloat(209.0)
-        case .iPhone5, .iPhone5s, .iPhone5c:
-            frameH = CGFloat(224.0)
-        case .iPhone6, .iPhone6s:
-            frameH = CGFloat(258.0)
-        case .iPhone6Plus, .iPhone6sPlus:
-            frameH = CGFloat(271.0)
-        default:
-            break
-        }
-
-        let frame: CGRect = CGRectMake(0, 0, SCREEN_WIDTH, frameH)
+        let frameH = CGFloat(224.0)
+        let frame: CGRect = CGRect(x:0, y:0, width:SCREEN_WIDTH, height:frameH)
         super.init(frame: frame)
-        self.backgroundColor = .lightGrayColor()
-        customSubview(frame)
+        self.backgroundColor = .lightGray()
+        customSubview(frame: frame)
 
     }
 
     public func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
-        KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
+        KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(view: superView, margin: 0)
 
         if field != nil {
             textFields.append(field!)
@@ -54,7 +41,7 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
             return
         }
         for view in superView.subviews {
-            if view.isKindOfClass(UITextField) {
+            if view.isKind(of: UITextField.self) {
                 let textField = view as! UITextField
                 textField.delegate = self
                 textFields.append(textField)
@@ -66,23 +53,23 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
     private func customSubview(frame: CGRect) {
         for idx in 0...11 {
             let button = UIButton()
-            button.frame = CGRectMake(CGFloat(idx%3) * (frame.width/3+marginvalue), CGFloat(idx/3) * (frame.height/4.0 + marginvalue), frame.width/3, frame.height/4.0)
-            button.backgroundColor = .whiteColor()
+            button.frame = CGRect(x:CGFloat(idx%3) * (frame.width/3+marginvalue),y: CGFloat(idx/3) * (frame.height/4.0 + marginvalue), width:frame.width/3, height:frame.height/4.0)
+            button.backgroundColor = .white()
             button.tag = idx
-            button.setTitle("\(idx+1)", forState: .Normal)
+            button.setTitle("\(idx+1)", for: [])
             if idx == 9 {
-                button.setTitle("x", forState: .Normal)
+                button.setTitle("x", for: [])
             }
             if idx == 10 {
-                button.setTitle("0", forState: .Normal)
+                button.setTitle("0", for: [])
             }
             if idx == 11 {
                 /// so https://the-nerd.be/2015/08/07/load-assets-from-bundle-resources-in-cocoapods/
                 var image: UIImage?
-                let podBundle = NSBundle(forClass: self.classForCoder)
-                if let bundleURL = podBundle.URLForResource("IDCardKeyboard", withExtension: "bundle") {
-                    if let bundle = NSBundle(URL: bundleURL) {
-                        image = UIImage(named: "Keyboard_Backspace", inBundle: bundle, compatibleWithTraitCollection: nil)
+                let podBundle = Bundle(for: self.classForCoder)
+                if let bundleURL = podBundle.urlForResource("IDCardKeyboard", withExtension: "bundle") {
+                    if let bundle = Bundle(url: bundleURL) {
+                        image = UIImage(named: "Keyboard_Backspace", in: bundle, compatibleWith: nil)
                     } else {
                         image = UIImage(named: "Keyboard_Backspace")
                     }
@@ -90,16 +77,16 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
                         image = UIImage(named: "Keyboard_Backspace")
                 }
                 if image != nil {
-                    button.setTitle("", forState: .Normal)
-                    button.setImage(image, forState: .Normal)
+                    button.setTitle("", for: [])
+                    button.setImage(image, for: [])
                 } else {
-                    button.setTitle("del", forState: .Normal)
+                    button.setTitle("del", for: [])
                 }
             }
-            button.setBackgroundImage(UIImage.ic_imageWithColor(.whiteColor()), forState: .Normal)
-            button.setBackgroundImage(UIImage.ic_imageWithColor(.lightGrayColor()), forState: .Highlighted)
-            button.setTitleColor(.blackColor(), forState: .Normal)
-            button.addTarget(self, action: #selector(tap(_:)), forControlEvents: .TouchUpInside)
+            button.setBackgroundImage(UIImage.ic_imageWithColor(color: .white()), for: [])
+            button.setBackgroundImage(UIImage.ic_imageWithColor(color: .lightGray()), for: .highlighted)
+            button.setTitleColor(.black(), for: [])
+            button.addTarget(self, action: #selector(tap), for: .touchUpInside)
             addSubview(button)
         }
     }

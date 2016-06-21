@@ -13,12 +13,12 @@ extension UIImage {
         UIRectFill(CGRect(origin: CGPoint.zero, size: size))
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return image
+        return image!
     }
 }
 
 public extension UITextField {
     public func idcardKeyboard(view: UIView) {
-        IDCardKeyboard.shareKeyboard.addKeyboard(view, field: self)
+        IDCardKeyboard.shareKeyboard.addKeyboard(view: view, field: self)
     }
 }
