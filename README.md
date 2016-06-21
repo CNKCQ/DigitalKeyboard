@@ -71,4 +71,4 @@ $ pod install
 }
 
   ```
-  ### :key: Basics  Swift 2.2
+  :key: Basics  Swift 2.2
