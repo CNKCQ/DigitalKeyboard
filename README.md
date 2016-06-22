@@ -7,7 +7,7 @@
 # IDCardKeyboard
 A custom digital keyboard for idcard
 ##### :eyes: See also:
-![](http://7xslr9.com1.z0.glb.clouddn.com/IDCardKeyboard.gif) 
+![](http://7xslr9.com1.z0.glb.clouddn.com/IDCardKeyboard.gif)
 ### CocoaPods
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
@@ -41,34 +41,35 @@ $ pod install
   class ViewController: UIViewController {
     let textField: UITextField = UITextField()
     let fieldNext: UITextField = UITextField()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
+
         view.backgroundColor = .blueColor()
         textField.frame = CGRectMake(80, 400, 160, 30)
         textField.borderStyle = .RoundedRect
         textField.clearButtonMode = .WhileEditing
         textField.becomeFirstResponder()
         view.addSubview(textField)
-        
+
         fieldNext.frame = CGRectMake(80, 500, 160, 30)
         fieldNext.borderStyle = .RoundedRect
         fieldNext.placeholder = "nextField"
         view .addSubview(fieldNext)
-        
+
         textField.idcardKeyboard(view)//一句代码搞定数字键盘
 
-        
+
     }
-    
-  
+
+
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
             UIApplication.sharedApplication().keyWindow?.endEditing(true)
     }
-    
+
 }
 
   ```
+
   :key: Basics  Swift 3.0, Swift2.2
