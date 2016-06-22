@@ -71,4 +71,4 @@ $ pod install
 }
 
   ```
-  :key: Basics  Swift 3.0
+  :key: Basics  Swift 3.0, Swift2.2
