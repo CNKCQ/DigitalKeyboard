@@ -67,6 +67,7 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
         for idx in 0...11 {
             let button = UIButton()
             button.frame = CGRectMake(CGFloat(idx%3) * (frame.width/3+marginvalue), CGFloat(idx/3) * (frame.height/4.0 + marginvalue), frame.width/3, frame.height/4.0)
+            button.titleLabel?.font = UIFont.systemFontOfSize(28)
             button.backgroundColor = .whiteColor()
             button.tag = idx
             button.setTitle("\(idx+1)", forState: .Normal)
