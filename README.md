@@ -73,3 +73,7 @@ $ pod install
   ```
 
   :key: Basics  Swift 3.0, Swift2.2
+
+   License
+
+IDCardKeyboard is available under the MIT license. See the LICENSE file for more info.
