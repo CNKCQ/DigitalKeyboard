@@ -72,7 +72,7 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
             button.tag = idx
             button.setTitle("\(idx+1)", forState: .Normal)
             if idx == 9 {
-                button.setTitle("x", forState: .Normal)
+                button.setTitle("X", forState: .Normal)
             }
             if idx == 10 {
                 button.setTitle("0", forState: .Normal)
@@ -109,7 +109,15 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
         if sender.tag == 11 {
             firstResponder()?.deleteBackward()
         } else {
+            if firstResponder()!.text!.characters.count >= 20 {
+                return
+            }
             firstResponder()?.insertText(sender.currentTitle!)
+            if firstResponder()!.text!.characters.count == 6 {
+                firstResponder()?.insertText(" ")
+            } else if firstResponder()!.text!.characters.count == 13 {
+                firstResponder()?.insertText(" ")
+            } //todo
         }
     }
 

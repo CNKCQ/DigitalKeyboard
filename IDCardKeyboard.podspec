@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "IDCardKeyboard"
-  s.version      = "1.0.8"
+  s.version      = "1.0.9"
   s.summary      = "A custom keyboard of IDCardKeyboard."
 
   # This description is used to generate tags and improve search results.
@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
                    DESC
 
   s.homepage     = "https://github.com/CNKCQ/IDCardKeyboard.git"
-  s.screenshots  = "http://7xslr9.com1.z0.glb.clouddn.com/2016-5-30-IDCardKeyboard.gif", "http://7xslr9.com1.z0.glb.clouddn.com/2016-5-30-IDCardKeyboard2.gif"
+  s.screenshots  = "http://7xslr9.com1.z0.glb.clouddn.com/IDCardKeyboard.gif"
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
