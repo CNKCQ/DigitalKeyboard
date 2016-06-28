@@ -113,11 +113,11 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
                 return
             }
             firstResponder()?.insertText(sender.currentTitle!)
-            if firstResponder()!.text!.characters.count == 6 {
-                firstResponder()?.insertText(" ")
-            } else if firstResponder()!.text!.characters.count == 13 {
-                firstResponder()?.insertText(" ")
-            } //todo
+//            if firstResponder()!.text!.characters.count == 6 {
+//                firstResponder()?.insertText(" ")
+//            } else if firstResponder()!.text!.characters.count == 13 {
+//                firstResponder()?.insertText(" ")
+//            } //todo
         }
     }
 
