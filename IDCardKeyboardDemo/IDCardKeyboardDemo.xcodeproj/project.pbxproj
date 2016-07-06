@@ -212,12 +212,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C64876A1CFC276600662391 /* Build configuration list for PBXNativeTarget "IDCardKeyboardDemo" */;
 			buildPhases = (
+				656E2AAB35160421C2E021FE /* Check Pods Manifest.lock */,
 				A9DCAB975C54DE6BD966F3DD /* 📦 Check Pods Manifest.lock */,
 				3C64873E1CFC276600662391 /* Sources */,
 				3C64873F1CFC276600662391 /* Frameworks */,
 				3C6487401CFC276600662391 /* Resources */,
 				81B4600FFD91722CFC02EBBB /* 📦 Embed Pods Frameworks */,
 				665A5674017901593F4AFA8D /* 📦 Copy Pods Resources */,
+				F092FB03E506CABE766FBD62 /* Embed Pods Frameworks */,
+				6EAF2F5176F71E7CEE9CA4BF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,12 +235,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C64876D1CFC276600662391 /* Build configuration list for PBXNativeTarget "IDCardKeyboardDemoTests" */;
 			buildPhases = (
+				9CBBBA45BE78B0EB3D532293 /* Check Pods Manifest.lock */,
 				63FFD436034981FB4727709F /* 📦 Check Pods Manifest.lock */,
 				3C6487521CFC276600662391 /* Sources */,
 				3C6487531CFC276600662391 /* Frameworks */,
 				3C6487541CFC276600662391 /* Resources */,
 				18D58F1A5D6548C2A046F417 /* 📦 Embed Pods Frameworks */,
 				6E350BD065D31AA0354A37F8 /* 📦 Copy Pods Resources */,
+				F04F6FAD475B6FB3EF68C157 /* Embed Pods Frameworks */,
+				F12B3568EB2F996B2D63CCAC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,11 +259,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C6487701CFC276600662391 /* Build configuration list for PBXNativeTarget "IDCardKeyboardDemoUITests" */;
 			buildPhases = (
+				269391B723383307432D8AD9 /* Check Pods Manifest.lock */,
 				914CD27634625143D20AD5C9 /* 📦 Check Pods Manifest.lock */,
 				3C64875D1CFC276600662391 /* Sources */,
 				3C64875E1CFC276600662391 /* Frameworks */,
 				3C64875F1CFC276600662391 /* Resources */,
 				D78BC60DA4C27F170FD3DFB2 /* 📦 Copy Pods Resources */,
+				730051998C7020FD96F1794C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -357,6 +365,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IDCardKeyboardDemoTests/Pods-IDCardKeyboardDemoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		269391B723383307432D8AD9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		63FFD436034981FB4727709F /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -365,6 +388,21 @@
 			inputPaths = (
 			);
 			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		656E2AAB35160421C2E021FE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,6 +440,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IDCardKeyboardDemoTests/Pods-IDCardKeyboardDemoTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6EAF2F5176F71E7CEE9CA4BF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IDCardKeyboardDemo/Pods-IDCardKeyboardDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		730051998C7020FD96F1794C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IDCardKeyboardDemoUITests/Pods-IDCardKeyboardDemoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		81B4600FFD91722CFC02EBBB /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,6 +493,21 @@
 			inputPaths = (
 			);
 			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9CBBBA45BE78B0EB3D532293 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +543,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IDCardKeyboardDemoUITests/Pods-IDCardKeyboardDemoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F04F6FAD475B6FB3EF68C157 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IDCardKeyboardDemoTests/Pods-IDCardKeyboardDemoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F092FB03E506CABE766FBD62 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IDCardKeyboardDemo/Pods-IDCardKeyboardDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F12B3568EB2F996B2D63CCAC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IDCardKeyboardDemoTests/Pods-IDCardKeyboardDemoTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

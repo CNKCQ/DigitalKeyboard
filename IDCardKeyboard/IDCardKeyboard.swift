@@ -13,15 +13,15 @@ let marginvalue = CGFloat(0.5)
 let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
 let CLEAR_NOTIFICTION = "CLEAR_NOTIFICTION"
 
-public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedback {
-    public static let shareKeyboard: IDCardKeyboard = IDCardKeyboard()
+public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioFeedback {
+    public static let shareKeyboard: IDCardKeyboard = IDCardKeyboard(frame: CGRect(x:0, y:0, width: SCREEN_WIDTH, height: 224), inputViewStyle: .Default)
     public var enableInputClicksWhenVisible: Bool {
         return true
     }
     var textFields = [UITextField]()
     var superView: UIView! = nil
 
-    override init(frame: CGRect) {
+    override init(frame: CGRect, inputViewStyle: UIInputViewStyle) {
         var frameH = CGFloat(224.0)
         switch Device() {
         case .iPhone4, .iPhone4s:
@@ -35,17 +35,14 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
         default:
             break
         }
-
-        let frame: CGRect = CGRectMake(0, 0, SCREEN_WIDTH, frameH)
-        super.init(frame: frame)
+        super.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, frameH), inputViewStyle: inputViewStyle)
         self.backgroundColor = .lightGrayColor()
         customSubview(frame)
-
     }
 
     public func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
-        KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
+//        KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
 
         if field != nil {
             textFields.append(field!)
@@ -103,6 +100,11 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
             button.addTarget(self, action: #selector(tap(_:)), forControlEvents: .TouchUpInside)
             addSubview(button)
         }
+        setNeedsLayout()
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
     }
 
     func tap(sender: UIButton) {
@@ -113,11 +115,6 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
                 return
             }
             firstResponder()?.insertText(sender.currentTitle!)
-//            if firstResponder()!.text!.characters.count == 6 {
-//                firstResponder()?.insertText(" ")
-//            } else if firstResponder()!.text!.characters.count == 13 {
-//                firstResponder()?.insertText(" ")
-//            } //todo
         }
     }
 
