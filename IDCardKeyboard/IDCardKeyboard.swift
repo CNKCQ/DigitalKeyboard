@@ -14,7 +14,7 @@ let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
 let CLEAR_NOTIFICTION = "CLEAR_NOTIFICTION"
 
 public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioFeedback {
-    public static let shareKeyboard: IDCardKeyboard = IDCardKeyboard(frame: CGRect(x:0, y:0, width: SCREEN_WIDTH, height: 224), inputViewStyle: .Default)
+    public static let shareKeyboard: IDCardKeyboard = IDCardKeyboard(frame: CGRect(x:0, y:0, width: SCREEN_WIDTH, height: 224), inputViewStyle: .Keyboard)
     public var enableInputClicksWhenVisible: Bool {
         return true
     }
@@ -63,7 +63,6 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
     private func customSubview(frame: CGRect) {
         for idx in 0...11 {
             let button = UIButton()
-            button.frame = CGRectMake(CGFloat(idx%3) * (frame.width/3+marginvalue), CGFloat(idx/3) * (frame.height/4.0 + marginvalue), frame.width/3, frame.height/4.0)
             button.titleLabel?.font = UIFont.systemFontOfSize(28)
             button.backgroundColor = .whiteColor()
             button.tag = idx
@@ -105,6 +104,12 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
 
     public override func layoutSubviews() {
         super.layoutSubviews()
+        for view in subviews {
+            if view .isKindOfClass(UIButton) {
+                let idx = view.tag
+                view.frame = CGRectMake(CGFloat(idx%3) * (frame.width/3+marginvalue), CGFloat(idx/3) * (frame.height/4.0 + marginvalue), frame.width/3, frame.height/4.0)
+            }
+        }
     }
 
     func tap(sender: UIButton) {
