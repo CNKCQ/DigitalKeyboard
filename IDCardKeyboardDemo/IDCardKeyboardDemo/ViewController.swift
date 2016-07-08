@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .blueColor()
+        view.backgroundColor = .orangeColor()
         textField.frame = CGRect(x: 80, y: 400, width: 200, height: 30)
         textField.borderStyle = .RoundedRect
         textField.clearButtonMode = .WhileEditing
@@ -30,10 +30,10 @@ class ViewController: UIViewController {
         view.addSubview(fieldNext)
         textField.becomeFirstResponder()
         textField.idcardKeyboard(view)//一句代码搞定数字键盘
-//        fieldNext.idcardKeyboard(view)
+        fieldNext.idcardKeyboard(view)
 
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }

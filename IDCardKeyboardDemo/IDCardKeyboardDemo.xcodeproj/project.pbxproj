@@ -18,6 +18,9 @@
 		3C64875B1CFC276600662391 /* IDCardKeyboardDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C64875A1CFC276600662391 /* IDCardKeyboardDemoTests.swift */; };
 		3C6487661CFC276600662391 /* IDCardKeyboardDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6487651CFC276600662391 /* IDCardKeyboardDemoUITests.swift */; };
 		3CBD9C831D0AB35E00D87C41 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD9C821D0AB35E00D87C41 /* Extensions.swift */; };
+		3CF242771D2F8B120098E21F /* Keyboard_DismissKey.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF242741D2F8B120098E21F /* Keyboard_DismissKey.png */; };
+		3CF242781D2F8B120098E21F /* Keyboard_DismissKey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF242751D2F8B120098E21F /* Keyboard_DismissKey@2x.png */; };
+		3CF242791D2F8B120098E21F /* Keyboard_DismissKey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF242761D2F8B120098E21F /* Keyboard_DismissKey@3x.png */; };
 		3CFFA0BF1D05574700FF0AA6 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFFA0BD1D05574700FF0AA6 /* KeyboardNotification.swift */; };
 		3CFFA0C01D05574700FF0AA6 /* IDCardKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFFA0BE1D05574700FF0AA6 /* IDCardKeyboard.swift */; };
 		61F51E7662D149D1977B7C6F /* Pods_IDCardKeyboardDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F35DDDD2F16BC252F31BC7F /* Pods_IDCardKeyboardDemo.framework */; };
@@ -61,6 +64,9 @@
 		3C6487651CFC276600662391 /* IDCardKeyboardDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardKeyboardDemoUITests.swift; sourceTree = "<group>"; };
 		3C6487671CFC276600662391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CBD9C821D0AB35E00D87C41 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3CF242741D2F8B120098E21F /* Keyboard_DismissKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Keyboard_DismissKey.png; sourceTree = "<group>"; };
+		3CF242751D2F8B120098E21F /* Keyboard_DismissKey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_DismissKey@2x.png"; sourceTree = "<group>"; };
+		3CF242761D2F8B120098E21F /* Keyboard_DismissKey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_DismissKey@3x.png"; sourceTree = "<group>"; };
 		3CFFA0BD1D05574700FF0AA6 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
 		3CFFA0BE1D05574700FF0AA6 /* IDCardKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDCardKeyboard.swift; sourceTree = "<group>"; };
 		81BE1E5C346F7DCA6721ADEF /* Pods-IDCardKeyboardDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDCardKeyboardDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IDCardKeyboardDemoTests/Pods-IDCardKeyboardDemoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +116,9 @@
 		3C2A4F8E1D17E10600D2EC36 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				3CF242741D2F8B120098E21F /* Keyboard_DismissKey.png */,
+				3CF242751D2F8B120098E21F /* Keyboard_DismissKey@2x.png */,
+				3CF242761D2F8B120098E21F /* Keyboard_DismissKey@3x.png */,
 				3C2A4F8F1D17E10600D2EC36 /* Keyboard_Backspace@2x.png */,
 				3C2A4F901D17E10600D2EC36 /* Keyboard_Backspace@3x.png */,
 			);
@@ -325,6 +334,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CF242791D2F8B120098E21F /* Keyboard_DismissKey@3x.png in Resources */,
+				3CF242781D2F8B120098E21F /* Keyboard_DismissKey@2x.png in Resources */,
+				3CF242771D2F8B120098E21F /* Keyboard_DismissKey.png in Resources */,
 				3C6487501CFC276600662391 /* LaunchScreen.storyboard in Resources */,
 				3C2A4F921D17E10600D2EC36 /* Keyboard_Backspace@3x.png in Resources */,
 				3C64874D1CFC276600662391 /* Assets.xcassets in Resources */,
