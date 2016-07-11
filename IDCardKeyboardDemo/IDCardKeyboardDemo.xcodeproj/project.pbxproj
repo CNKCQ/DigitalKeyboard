@@ -17,7 +17,6 @@
 		3C6487501CFC276600662391 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C64874E1CFC276600662391 /* LaunchScreen.storyboard */; };
 		3C64875B1CFC276600662391 /* IDCardKeyboardDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C64875A1CFC276600662391 /* IDCardKeyboardDemoTests.swift */; };
 		3C6487661CFC276600662391 /* IDCardKeyboardDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6487651CFC276600662391 /* IDCardKeyboardDemoUITests.swift */; };
-		3CBD9C831D0AB35E00D87C41 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD9C821D0AB35E00D87C41 /* Extensions.swift */; };
 		3CF242771D2F8B120098E21F /* Keyboard_DismissKey.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF242741D2F8B120098E21F /* Keyboard_DismissKey.png */; };
 		3CF242781D2F8B120098E21F /* Keyboard_DismissKey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF242751D2F8B120098E21F /* Keyboard_DismissKey@2x.png */; };
 		3CF242791D2F8B120098E21F /* Keyboard_DismissKey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF242761D2F8B120098E21F /* Keyboard_DismissKey@3x.png */; };
@@ -63,7 +62,6 @@
 		3C6487611CFC276600662391 /* IDCardKeyboardDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDCardKeyboardDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6487651CFC276600662391 /* IDCardKeyboardDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardKeyboardDemoUITests.swift; sourceTree = "<group>"; };
 		3C6487671CFC276600662391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3CBD9C821D0AB35E00D87C41 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3CF242741D2F8B120098E21F /* Keyboard_DismissKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Keyboard_DismissKey.png; sourceTree = "<group>"; };
 		3CF242751D2F8B120098E21F /* Keyboard_DismissKey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_DismissKey@2x.png"; sourceTree = "<group>"; };
 		3CF242761D2F8B120098E21F /* Keyboard_DismissKey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_DismissKey@3x.png"; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 				3C2A4F8D1D17E10600D2EC36 /* Resources */,
 				3CFFA0BD1D05574700FF0AA6 /* KeyboardNotification.swift */,
 				3CFFA0BE1D05574700FF0AA6 /* IDCardKeyboard.swift */,
-				3CBD9C821D0AB35E00D87C41 /* Extensions.swift */,
 			);
 			name = IDCardKeyboard;
 			path = ../IDCardKeyboard;
@@ -609,7 +606,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CBD9C831D0AB35E00D87C41 /* Extensions.swift in Sources */,
 				3CFFA0BF1D05574700FF0AA6 /* KeyboardNotification.swift in Sources */,
 				3CFFA0C01D05574700FF0AA6 /* IDCardKeyboard.swift in Sources */,
 				3C6487481CFC276600662391 /* ViewController.swift in Sources */,

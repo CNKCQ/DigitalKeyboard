@@ -42,7 +42,7 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
             break
         }
         super.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, frameH), inputViewStyle: inputViewStyle)
-        self.backgroundColor = .lightGrayColor()
+        backgroundColor = .lightGrayColor()
     }
 
     // Called after the style setup
@@ -102,7 +102,9 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
                 case .IDCard:
                     button.setTitle("X", forState: .Normal)
                 case .Number:
-                    button.setTitle(".", forState: .Normal)
+                    let locale = NSLocale.currentLocale()
+                    let decimalSeparator = locale.objectForKey(NSLocaleDecimalSeparator) as? String ?? "."
+                    button.setTitle(decimalSeparator, forState: .Normal)
                 }
             case 12:
                     button.setTitle("", forState: .Normal)
@@ -110,7 +112,7 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
             case 13:
                 if backSpace != nil {
                     button.titleLabel?.font = UIFont.systemFontOfSize(17)
-                    button.setTitle("Done", forState: .Normal)
+                    button.setTitle(LocalizedString("Done"), forState: .Normal)
                     button.backgroundColor = UIColor(red: 28/255, green: 171/255, blue: 235/255, alpha: 1)
                     button.setTitleColor(.whiteColor(), forState: .Normal)
                     button.setBackgroundImage(nil, forState: .Normal)
@@ -161,7 +163,28 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
         return firstResponder
     }
 
+    func LocalizedString(key: String) -> String {
+        return (NSBundle(identifier: "com.apple.UIKit")?.localizedStringForKey(key, value: nil, table: nil))!
+    }
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension UIImage {
+    public class func ic_imageWithColor(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+        UIGraphicsBeginImageContext(size)
+        color.set()
+        UIRectFill(CGRect(origin: CGPoint.zero, size: size))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+}
+
+public extension UITextField {
+    public func idcardKeyboard(view: UIView) {
+        IDCardKeyboard.shareKeyboard.addKeyboard(view, field: self)
     }
 }

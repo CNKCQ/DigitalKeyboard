@@ -23,7 +23,6 @@ class ViewController: UIViewController {
         textField.clearButtonMode = .WhileEditing
         textField.becomeFirstResponder()
         view.addSubview(textField)
-        textField.keyboardType = .DecimalPad
         fieldNext.frame = CGRect(x: 80, y: 500, width: 200, height: 30)
         fieldNext.borderStyle = .RoundedRect
         fieldNext.placeholder = "nextField"
