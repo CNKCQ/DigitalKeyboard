@@ -27,8 +27,6 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
     var textFields = [UITextField]()
     var superView: UIView! = nil
 
-
-
     override init(frame: CGRect, inputViewStyle: UIInputViewStyle) {
         var frameH = CGFloat(224.0)
         switch Device() {
@@ -47,9 +45,10 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
         self.backgroundColor = .lightGrayColor()
     }
 
+    // Called after the style setup
     public func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
-//        KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
+        //KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
         customSubview()
         if field != nil {
             textFields.append(field!)
@@ -73,7 +72,7 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
             button.titleLabel?.font = UIFont.systemFontOfSize(28)
             button.backgroundColor = .whiteColor()
             button.tag = idx
-            /// so https://the-nerd.be/2015/08/07/load-assets-from-bundle-resources-in-cocoapods/
+            // see https://the-nerd.be/2015/08/07/load-assets-from-bundle-resources-in-cocoapods/
             var backSpace: UIImage?
             var dismiss: UIImage?
             let podBundle = NSBundle(forClass: self.classForCoder)
