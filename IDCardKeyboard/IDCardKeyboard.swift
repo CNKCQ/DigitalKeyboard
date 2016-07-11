@@ -152,13 +152,6 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
         }
     }
 
-    func editTextField(text: String) {
-        if textFields.count == 0 {
-            return
-        }
-        firstResponder()?.text = text
-    }
-
     func firstResponder() -> UITextField? {
         var firstResponder: UITextField?
         for field in textFields {
@@ -173,11 +166,3 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-
-/*
- keyboard height
- iphone5 : 224
- iphone6 : 258
- iphone6 plus: 271
- */
