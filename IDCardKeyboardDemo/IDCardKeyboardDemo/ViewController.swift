@@ -29,7 +29,10 @@ class ViewController: UIViewController {
         fieldNext.placeholder = "nextField"
         view.addSubview(fieldNext)
         textField.becomeFirstResponder()
-        textField.idcardKeyboard(view)//一句代码搞定数字键盘
+        let keyboard = IDCardKeyboard(frame: CGRect.zero, inputViewStyle: .Keyboard)
+        keyboard.style = .Number
+        keyboard.addKeyboard(view)
+        textField.inputView = keyboard//一句代码搞定数字键盘
         fieldNext.idcardKeyboard(view)
 
     }

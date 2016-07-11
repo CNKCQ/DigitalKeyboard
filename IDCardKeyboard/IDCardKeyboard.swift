@@ -11,9 +11,9 @@ import UIKit
 
 let marginvalue = CGFloat(0.5)
 let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
-let CLEAR_NOTIFICTION = "CLEAR_NOTIFICTION"
 
-enum KeyboardStyle {
+// the display style of the DigitalKeyboard
+public enum KeyboardStyle {
     case IDCard
     case Number
 }
@@ -23,9 +23,10 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
     public var enableInputClicksWhenVisible: Bool {
         return true
     }
+    public var style = KeyboardStyle.IDCard
     var textFields = [UITextField]()
     var superView: UIView! = nil
-    var style = KeyboardStyle.IDCard
+
 
 
     override init(frame: CGRect, inputViewStyle: UIInputViewStyle) {
@@ -44,13 +45,12 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
         }
         super.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, frameH), inputViewStyle: inputViewStyle)
         self.backgroundColor = .lightGrayColor()
-        customSubview()
     }
 
     public func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
 //        KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
-
+        customSubview()
         if field != nil {
             textFields.append(field!)
             field!.inputView = self
