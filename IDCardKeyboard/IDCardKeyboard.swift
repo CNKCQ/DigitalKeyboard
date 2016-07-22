@@ -11,6 +11,8 @@ import UIKit
 
 let marginvalue = CGFloat(0.5)
 let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
+let DEFAULT_DONE_COLOR = UIColor(red: 28/255, green: 171/255, blue: 235/255, alpha: 1)
+
 
 // the display style of the DigitalKeyboard
 public enum KeyboardStyle {
@@ -48,7 +50,7 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
     // Called after the style setup
     public func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
-        //KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
+        //KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0) // TODO
         customSubview()
         if field != nil {
             textFields.append(field!)
@@ -93,7 +95,7 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
             button.setTitleColor(.blackColor(), forState: .Normal)
             switch idx {
             case 9:
-                button.setTitle(" ", forState: .Normal)
+                button.setTitle("", forState: .Normal)
                 button.setImage(dismiss, forState: .Normal)
             case 10:
                 button.setTitle("0", forState: .Normal)
@@ -113,12 +115,11 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
                 if backSpace != nil {
                     button.titleLabel?.font = UIFont.systemFontOfSize(17)
                     button.setTitle(LocalizedString("Done"), forState: .Normal)
-                    button.backgroundColor = UIColor(red: 28/255, green: 171/255, blue: 235/255, alpha: 1)
+                    button.backgroundColor = DEFAULT_DONE_COLOR
                     button.setTitleColor(.whiteColor(), forState: .Normal)
                     button.setBackgroundImage(nil, forState: .Normal)
                     button.setBackgroundImage(nil, forState: .Highlighted)
                 }
-
             default:
                 button.setTitle("\(idx+1)", forState: .Normal)
             }
@@ -169,6 +170,18 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func setDoneButton(title: String, titleColor: UIColor = .whiteColor(), theme: UIColor = DEFAULT_DONE_COLOR) {
+        for item in subviews {
+            if item.tag == 13 {
+                let itemButton = item as! UIButton
+                itemButton.titleLabel?.font = UIFont.systemFontOfSize(17)
+                itemButton.setTitle(title, forState: .Normal)
+                itemButton.backgroundColor = theme
+                itemButton.setTitleColor(titleColor, forState: .Normal)
+            }
+        }
     }
 }
 

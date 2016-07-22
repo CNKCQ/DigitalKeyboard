@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         let keyboard = IDCardKeyboard(frame: CGRect.zero, inputViewStyle: .Keyboard)
         keyboard.style = .Number
         keyboard.addKeyboard(view)
+        keyboard.setDoneButton("我去", titleColor: .blackColor(), theme: .orangeColor())
         textField.inputView = keyboard//一句代码搞定数字键盘
         fieldNext.idcardKeyboard(view)
 
