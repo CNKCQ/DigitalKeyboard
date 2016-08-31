@@ -45,6 +45,4 @@ class ViewController: UIViewController {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
             UIApplication.sharedApplication().keyWindow?.endEditing(true)
     }
-
-
 }

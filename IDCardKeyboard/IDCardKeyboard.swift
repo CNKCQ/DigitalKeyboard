@@ -25,9 +25,17 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
     public var enableInputClicksWhenVisible: Bool {
         return true
     }
-    public var style = KeyboardStyle.IDCard
-    var textFields = [UITextField]()
-    var superView: UIView! = nil
+    public var style = KeyboardStyle.IDCard {
+        didSet {
+            setDigitButton(style)
+            }
+    }
+    private var textFields = [UITextField]()
+    private var superView: UIView! = nil
+
+    public func customDoneButton(title: String, titleColor: UIColor = .whiteColor(), theme: UIColor = DEFAULT_DONE_COLOR) {
+        setDoneButton(title, titleColor: titleColor, theme: DEFAULT_DONE_COLOR)
+    }
 
     override init(frame: CGRect, inputViewStyle: UIInputViewStyle) {
         var frameH = CGFloat(224.0)
@@ -47,6 +55,9 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
         backgroundColor = .lightGrayColor()
     }
 
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // Called after the style setup
     public func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
@@ -74,6 +85,7 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
             button.titleLabel?.font = UIFont.systemFontOfSize(28)
             button.backgroundColor = .whiteColor()
             button.tag = idx
+            addSubview(button)
             // see https://the-nerd.be/2015/08/07/load-assets-from-bundle-resources-in-cocoapods/
             var backSpace: UIImage?
             var dismiss: UIImage?
@@ -100,14 +112,7 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
             case 10:
                 button.setTitle("0", forState: .Normal)
             case 11:
-                switch style {
-                case .IDCard:
-                    button.setTitle("X", forState: .Normal)
-                case .Number:
-                    let locale = NSLocale.currentLocale()
-                    let decimalSeparator = locale.objectForKey(NSLocaleDecimalSeparator) as? String ?? "."
-                    button.setTitle(decimalSeparator, forState: .Normal)
-                }
+                setDigitButton(style)
             case 12:
                     button.setTitle("", forState: .Normal)
                     button.setImage(backSpace, forState: .Normal)
@@ -124,7 +129,6 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
                 button.setTitle("\(idx+1)", forState: .Normal)
             }
             button.addTarget(self, action: #selector(tap(_:)), forControlEvents: .TouchUpInside)
-            addSubview(button)
         }
     }
 
@@ -164,23 +168,38 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
         return firstResponder
     }
 
+    func findButtonByTag(tag: Int) -> UIButton? {
+        for button in subviews {
+            if button.tag == tag {
+                return button as? UIButton
+            }
+        }
+        return nil
+    }
+
     func LocalizedString(key: String) -> String {
         return (NSBundle(identifier: "com.apple.UIKit")?.localizedStringForKey(key, value: nil, table: nil))!
     }
 
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func setDoneButton(title: String, titleColor: UIColor = .whiteColor(), theme: UIColor = DEFAULT_DONE_COLOR) {
+        guard let itemButton = findButtonByTag(13) else {
+            fatalError("not found the button with the tag")
+        }
+        itemButton.titleLabel?.font = UIFont.systemFontOfSize(17)
+        itemButton.setTitle(title, forState: .Normal)
+        itemButton.backgroundColor = theme
+        itemButton.setTitleColor(titleColor, forState: .Normal)
     }
 
-    func setDoneButton(title: String, titleColor: UIColor = .whiteColor(), theme: UIColor = DEFAULT_DONE_COLOR) {
-        for item in subviews {
-            if item.tag == 13 {
-                let itemButton = item as! UIButton
-                itemButton.titleLabel?.font = UIFont.systemFontOfSize(17)
-                itemButton.setTitle(title, forState: .Normal)
-                itemButton.backgroundColor = theme
-                itemButton.setTitleColor(titleColor, forState: .Normal)
-            }
+    func setDigitButton(style: KeyboardStyle) {
+        let button = findButtonByTag(11)
+        switch style {
+        case .IDCard:
+            button?.setTitle("X", forState: .Normal)
+        case .Number:
+            let locale = NSLocale.currentLocale()
+            let decimalSeparator = locale.objectForKey(NSLocaleDecimalSeparator) as? String ?? "."
+            button?.setTitle(decimalSeparator, forState: .Normal)
         }
     }
 }
