@@ -30,7 +30,8 @@ class ViewController: UIViewController {
         textField.becomeFirstResponder()
         let keyboard = IDCardKeyboard(view: view)
         keyboard.style = .Number
-        keyboard.customDoneButton("我去", titleColor: .blackColor(), theme: .orangeColor())
+        keyboard.shouldHighlight = false
+        keyboard.customDoneButton("我去")
         textField.inputView = keyboard
 //        fieldNext.idcardKeyboard(view)
 

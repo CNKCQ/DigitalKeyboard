@@ -28,6 +28,11 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
             setDigitButton(style)
         }
     }
+    public var shouldHighlight = true {
+        didSet {
+            highlight(shouldHighlight)
+        }
+    }
     private var textFields = [UITextField]()
     private var superView: UIView! = nil
 
@@ -105,8 +110,7 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
                 backSpace = UIImage(named: "Keyboard_Backspace")
                 dismiss = UIImage(named: "Keyboard_DismissKey")
             }
-            button.setBackgroundImage(UIImage.ic_imageWithColor(.whiteColor()), forState: .Normal)
-            button.setBackgroundImage(UIImage.ic_imageWithColor(.lightGrayColor()), forState: .Highlighted)
+            highlight(shouldHighlight)
             button.setTitleColor(.blackColor(), forState: .Normal)
             switch idx {
             case 9:
@@ -195,6 +199,21 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
         itemButton.setTitle(title, forState: .Normal)
         itemButton.backgroundColor = theme
         itemButton.setTitleColor(titleColor, forState: .Normal)
+    }
+    
+    func highlight(highlighted: Bool) {
+        for view in subviews {
+            if let button = view as? UIButton {
+                if button.tag == 13 {return}
+                if highlighted {
+                    button.setBackgroundImage(UIImage.ic_imageWithColor(.whiteColor()), forState: .Normal)
+                    button.setBackgroundImage(UIImage.ic_imageWithColor(.lightGrayColor()), forState: .Highlighted)
+                } else {
+                    button.setBackgroundImage(UIImage.ic_imageWithColor(.whiteColor()), forState: .Normal)
+                    button.setBackgroundImage(UIImage.ic_imageWithColor(.whiteColor()), forState: .Highlighted)
+                }
+            }
+        }
     }
 
     func setDigitButton(style: KeyboardStyle) {
