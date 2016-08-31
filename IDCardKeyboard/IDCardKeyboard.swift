@@ -9,11 +9,9 @@
 import DeviceKit
 import UIKit
 
-let marginvalue = CGFloat(0.5)
-let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
-let DEFAULT_DONE_COLOR = UIColor(red: 28/255, green: 171/255, blue: 235/255, alpha: 1)
-
-
+private let marginvalue = CGFloat(0.5)
+private let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
+private let DEFAULT_DONE_COLOR = UIColor(red: 28/255, green: 171/255, blue: 235/255, alpha: 1)
 // the display style of the DigitalKeyboard
 public enum KeyboardStyle {
     case IDCard
@@ -21,23 +19,28 @@ public enum KeyboardStyle {
 }
 
 public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioFeedback {
-    public static let shareKeyboard: IDCardKeyboard = IDCardKeyboard(frame: CGRect(x:0, y:0, width: SCREEN_WIDTH, height: 224), inputViewStyle: .Keyboard)
+    public static let shareKeyboard = IDCardKeyboard(frame: CGRect(x:0, y:0, width: SCREEN_WIDTH, height: 224), inputViewStyle: .Keyboard)
     public var enableInputClicksWhenVisible: Bool {
         return true
     }
     public var style = KeyboardStyle.IDCard {
         didSet {
             setDigitButton(style)
-            }
+        }
     }
     private var textFields = [UITextField]()
     private var superView: UIView! = nil
 
     public func customDoneButton(title: String, titleColor: UIColor = .whiteColor(), theme: UIColor = DEFAULT_DONE_COLOR) {
-        setDoneButton(title, titleColor: titleColor, theme: DEFAULT_DONE_COLOR)
+        setDoneButton(title, titleColor: titleColor, theme: theme)
     }
 
-    override init(frame: CGRect, inputViewStyle: UIInputViewStyle) {
+    convenience init(view: UIView, field: UITextField?=nil) {
+        self.init(frame: CGRect.zero, inputViewStyle: .Keyboard)
+        addKeyboard(view, field: field)
+    }
+
+    private override init(frame: CGRect, inputViewStyle: UIInputViewStyle) {
         var frameH = CGFloat(224.0)
         switch Device() {
         case .iPhone4, .iPhone4s:
@@ -59,7 +62,7 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
         fatalError("init(coder:) has not been implemented")
     }
     // Called after the style setup
-    public func addKeyboard(view: UIView, field: UITextField?=nil) {
+    func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
         //KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0) // TODO
         customSubview()
@@ -128,7 +131,7 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
             default:
                 button.setTitle("\(idx+1)", forState: .Normal)
             }
-            button.addTarget(self, action: #selector(tap(_:)), forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: #selector(tap), forControlEvents: .TouchUpInside)
         }
     }
 
@@ -148,13 +151,16 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
     }
 
     func tap(sender: UIButton) {
+        guard let text = sender.currentTitle else {
+            fatalError("not found the sender's currentTitle")
+        }
         switch sender.tag {
         case 12:
             firstResponder()?.deleteBackward()
         case 13, 9:
             firstResponder()?.resignFirstResponder()
         default:
-            firstResponder()?.insertText(sender.currentTitle!)
+            firstResponder()?.insertText(text)
         }
     }
 
@@ -192,14 +198,16 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
     }
 
     func setDigitButton(style: KeyboardStyle) {
-        let button = findButtonByTag(11)
+        guard let button = findButtonByTag(11) else {
+            fatalError("not found the button with the tag")
+        }
         switch style {
         case .IDCard:
-            button?.setTitle("X", forState: .Normal)
+            button.setTitle("X", forState: .Normal)
         case .Number:
             let locale = NSLocale.currentLocale()
             let decimalSeparator = locale.objectForKey(NSLocaleDecimalSeparator) as? String ?? "."
-            button?.setTitle(decimalSeparator, forState: .Normal)
+            button.setTitle(decimalSeparator, forState: .Normal)
         }
     }
 }

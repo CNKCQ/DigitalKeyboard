@@ -28,12 +28,11 @@ class ViewController: UIViewController {
         fieldNext.placeholder = "nextField"
         view.addSubview(fieldNext)
         textField.becomeFirstResponder()
-        let keyboard = IDCardKeyboard(frame: CGRect.zero, inputViewStyle: .Keyboard)
+        let keyboard = IDCardKeyboard(view: view)
         keyboard.style = .Number
-        keyboard.addKeyboard(view)
-        keyboard.setDoneButton("我去", titleColor: .blackColor(), theme: .orangeColor())
+        keyboard.customDoneButton("我去", titleColor: .blackColor(), theme: .orangeColor())
         textField.inputView = keyboard//一句代码搞定数字键盘
-        fieldNext.idcardKeyboard(view)
+//        fieldNext.idcardKeyboard(view)
 
     }
 
