@@ -1,14 +1,14 @@
 //
-//  IDCardKeyboardDemoUITests.swift
-//  IDCardKeyboardDemoUITests
+//  DigitalKeyboardDemoUITests.swift
+//  DigitalKeyboardDemoUITests
 //
-//  Created by KingCQ on 16/5/30.
-//  Copyright © 2016年 KingCQ. All rights reserved.
+//  Created by Jack on 16/9/15.
+//  Copyright © 2016年 Jack. All rights reserved.
 //
 
 import XCTest
 
-class IDCardKeyboardDemoUITests: XCTestCase {
+class DigitalKeyboardDemoUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

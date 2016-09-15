@@ -1,15 +1,15 @@
 //
-//  IDCardKeyboardDemoTests.swift
-//  IDCardKeyboardDemoTests
+//  DigitalKeyboardDemoTests.swift
+//  DigitalKeyboardDemoTests
 //
-//  Created by KingCQ on 16/5/30.
-//  Copyright © 2016年 KingCQ. All rights reserved.
+//  Created by Jack on 16/9/15.
+//  Copyright © 2016年 Jack. All rights reserved.
 //
 
 import XCTest
-@testable import IDCardKeyboardDemo
+@testable import DigitalKeyboardDemo
 
-class IDCardKeyboardDemoTests: XCTestCase {
+class DigitalKeyboardDemoTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -28,7 +28,7 @@ class IDCardKeyboardDemoTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }
