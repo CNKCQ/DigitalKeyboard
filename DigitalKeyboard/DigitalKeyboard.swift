@@ -1,6 +1,6 @@
 //
 //  DigitalKeyboard.swift
-//  KeyBoard
+//  KeyBoard forKey
 //
 //  Created by Jack on 16/9/15.
 //  Copyright © 2016年 Jack. All rights reserved.
@@ -38,7 +38,7 @@ public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
     private var textFields = [UITextField]()
     private var superView: UIView? = nil
     
-    convenience init(view: UIView, field: UITextField?=nil) {
+    public convenience init(view: UIView, field: UITextField?=nil) {
         self.init(frame: CGRect.zero, inputViewStyle: .keyboard)
         addKeyboard(view: view, field: field)
     }

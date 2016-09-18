@@ -38,7 +38,7 @@ public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
     private var textFields = [UITextField]()
     private var superView: UIView? = nil
     
-    convenience init(view: UIView, field: UITextField?=nil) {
+    public convenience init(view: UIView, field: UITextField?=nil) {
         self.init(frame: CGRect.zero, inputViewStyle: .keyboard)
         addKeyboard(view: view, field: field)
     }
