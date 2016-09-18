@@ -14,18 +14,24 @@ class KeyboardNotification: AnyObject {
     var superOriginFrame: CGRect = CGRect.zero
     var superViewTopMargin: CGFloat?
     var keyboardShown: Bool = false
+    var isRotatting = false
+
 
     init() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShowNotify(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHidderNotify(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(rotated), name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
 
     func addKeyboardNotificationForSuperView(view: UIView, margin: CGFloat) {
         superView = view
         superViewTopMargin = margin
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShowNotify(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHidderNotify(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
 
     @objc func keyboardWillShowNotify(notifiction: NSNotification) {
+        if isRotatting {
+            return
+        }
         let info: NSDictionary = notifiction.userInfo!
         let value: NSValue = info.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
         let duration: Double = (info.objectForKey(UIKeyboardAnimationDurationUserInfoKey)?.doubleValue)!
@@ -53,7 +59,7 @@ class KeyboardNotification: AnyObject {
 
     @objc func keyboardWillHidderNotify(notifiction: NSNotification) {
         // 键盘没有遮挡输入框
-        if CGRectEqualToRect(superOriginFrame, CGRect.zero) {
+        if CGRectEqualToRect(superOriginFrame, CGRect.zero) || isRotatting {
             return
         }
         let info: NSDictionary = notifiction.userInfo!
@@ -64,6 +70,10 @@ class KeyboardNotification: AnyObject {
                 self.keyboardShown = false
                 self.superOriginFrame = CGRect.zero
         }
+    }
+
+    @objc func rotated() {
+        isRotatting = true
     }
 
     func caculateAbsoluteBottomY(view: UIView) -> CGFloat {

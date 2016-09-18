@@ -7,7 +7,7 @@
 # IDCardKeyboard
 A custom digital keyboard for idcard
 ##### :eyes: See also:
-![](http://7xslr9.com1.z0.glb.clouddn.com/IDCardKeyboard.gif) 
+![](http://7xslr9.com1.z0.glb.clouddn.com/IDKeyboard_id.gif) ![](http://7xslr9.com1.z0.glb.clouddn.com/IDKeyboard_nu.gif) 
 ### CocoaPods
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
@@ -71,4 +71,4 @@ $ pod install
 }
 
   ```
-  :key: Basics  Swift 3.0, Swift2.2
+  ### :key: Basics  Swift 2.2

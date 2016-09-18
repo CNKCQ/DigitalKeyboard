@@ -11,17 +11,25 @@ import UIKit
 
 let marginvalue = CGFloat(0.5)
 let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
-let CLEAR_NOTIFICTION = "CLEAR_NOTIFICTION"
+let DEFAULT_DONE_COLOR = UIColor(red: 28/255, green: 171/255, blue: 235/255, alpha: 1)
 
-public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedback {
-    public static let shareKeyboard: IDCardKeyboard = IDCardKeyboard()
+
+// the display style of the DigitalKeyboard
+public enum KeyboardStyle {
+    case IDCard
+    case Number
+}
+
+public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioFeedback {
+    public static let shareKeyboard: IDCardKeyboard = IDCardKeyboard(frame: CGRect(x:0, y:0, width: SCREEN_WIDTH, height: 224), inputViewStyle: .Keyboard)
     public var enableInputClicksWhenVisible: Bool {
         return true
     }
+    public var style = KeyboardStyle.IDCard
     var textFields = [UITextField]()
     var superView: UIView! = nil
 
-    override init(frame: CGRect) {
+    override init(frame: CGRect, inputViewStyle: UIInputViewStyle) {
         var frameH = CGFloat(224.0)
         switch Device() {
         case .iPhone4, .iPhone4s:
@@ -35,18 +43,15 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
         default:
             break
         }
-
-        let frame: CGRect = CGRectMake(0, 0, SCREEN_WIDTH, frameH)
-        super.init(frame: frame)
-        self.backgroundColor = .lightGrayColor()
-        customSubview(frame)
-
+        super.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, frameH), inputViewStyle: inputViewStyle)
+        backgroundColor = .lightGrayColor()
     }
 
+    // Called after the style setup
     public func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
-        KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0)
-
+        //KeyboardNotification.shareKeyboardNotification.addKeyboardNotificationForSuperView(superView, margin: 0) // TODO
+        customSubview()
         if field != nil {
             textFields.append(field!)
             field!.inputView = self
@@ -63,69 +68,90 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
         }
     }
 
-    private func customSubview(frame: CGRect) {
-        for idx in 0...11 {
+    private func customSubview() {
+        for idx in 0...13 {
             let button = UIButton()
-            button.frame = CGRectMake(CGFloat(idx%3) * (frame.width/3+marginvalue), CGFloat(idx/3) * (frame.height/4.0 + marginvalue), frame.width/3, frame.height/4.0)
             button.titleLabel?.font = UIFont.systemFontOfSize(28)
             button.backgroundColor = .whiteColor()
             button.tag = idx
-            button.setTitle("\(idx+1)", forState: .Normal)
-            if idx == 9 {
-                button.setTitle("X", forState: .Normal)
-            }
-            if idx == 10 {
-                button.setTitle("0", forState: .Normal)
-            }
-            if idx == 11 {
-                /// so https://the-nerd.be/2015/08/07/load-assets-from-bundle-resources-in-cocoapods/
-                var image: UIImage?
-                let podBundle = NSBundle(forClass: self.classForCoder)
-                if let bundleURL = podBundle.URLForResource("IDCardKeyboard", withExtension: "bundle") {
-                    if let bundle = NSBundle(URL: bundleURL) {
-                        image = UIImage(named: "Keyboard_Backspace", inBundle: bundle, compatibleWithTraitCollection: nil)
-                    } else {
-                        image = UIImage(named: "Keyboard_Backspace")
-                    }
+            // see https://the-nerd.be/2015/08/07/load-assets-from-bundle-resources-in-cocoapods/
+            var backSpace: UIImage?
+            var dismiss: UIImage?
+            let podBundle = NSBundle(forClass: self.classForCoder)
+            if let bundleURL = podBundle.URLForResource("IDCardKeyboard", withExtension: "bundle") {
+                if let bundle = NSBundle(URL: bundleURL) {
+                    backSpace = UIImage(named: "Keyboard_Backspace", inBundle: bundle, compatibleWithTraitCollection: nil)
+                    dismiss =  UIImage(named: "Keyboard_DismissKey", inBundle: bundle, compatibleWithTraitCollection: nil)
                 } else {
-                        image = UIImage(named: "Keyboard_Backspace")
+                    backSpace = UIImage(named: "Keyboard_Backspace")
+                    dismiss = UIImage(named: "Keyboard_DismissKey")
                 }
-                if image != nil {
-                    button.setTitle("", forState: .Normal)
-                    button.setImage(image, forState: .Normal)
-                } else {
-                    button.setTitle("del", forState: .Normal)
-                }
+            } else {
+                backSpace = UIImage(named: "Keyboard_Backspace")
+                dismiss = UIImage(named: "Keyboard_DismissKey")
             }
             button.setBackgroundImage(UIImage.ic_imageWithColor(.whiteColor()), forState: .Normal)
             button.setBackgroundImage(UIImage.ic_imageWithColor(.lightGrayColor()), forState: .Highlighted)
             button.setTitleColor(.blackColor(), forState: .Normal)
+            switch idx {
+            case 9:
+                button.setTitle("", forState: .Normal)
+                button.setImage(dismiss, forState: .Normal)
+            case 10:
+                button.setTitle("0", forState: .Normal)
+            case 11:
+                switch style {
+                case .IDCard:
+                    button.setTitle("X", forState: .Normal)
+                case .Number:
+                    let locale = NSLocale.currentLocale()
+                    let decimalSeparator = locale.objectForKey(NSLocaleDecimalSeparator) as? String ?? "."
+                    button.setTitle(decimalSeparator, forState: .Normal)
+                }
+            case 12:
+                    button.setTitle("", forState: .Normal)
+                    button.setImage(backSpace, forState: .Normal)
+            case 13:
+                if backSpace != nil {
+                    button.titleLabel?.font = UIFont.systemFontOfSize(17)
+                    button.setTitle(LocalizedString("Done"), forState: .Normal)
+                    button.backgroundColor = DEFAULT_DONE_COLOR
+                    button.setTitleColor(.whiteColor(), forState: .Normal)
+                    button.setBackgroundImage(nil, forState: .Normal)
+                    button.setBackgroundImage(nil, forState: .Highlighted)
+                }
+            default:
+                button.setTitle("\(idx+1)", forState: .Normal)
+            }
             button.addTarget(self, action: #selector(tap(_:)), forControlEvents: .TouchUpInside)
             addSubview(button)
         }
     }
 
-    func tap(sender: UIButton) {
-        if sender.tag == 11 {
-            firstResponder()?.deleteBackward()
-        } else {
-            if firstResponder()!.text!.characters.count >= 20 {
-                return
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+            for view in subviews {
+            if view .isKindOfClass(UIButton) {
+                let width = frame.width / 4 * 3
+                let idx = view.tag
+                if idx >= 12 {
+                    view.frame = CGRectMake(width + marginvalue, CGFloat((idx-12)%2) * (frame.height/2.0 + marginvalue), frame.width/4, (frame.height - marginvalue)/2.0)
+                } else {
+                    view.frame = CGRectMake(CGFloat(idx%3) * ((width - 2*marginvalue)/3+marginvalue), CGFloat(idx/3) * (frame.height/4.0 + marginvalue), (width - 2*marginvalue)/3, frame.height/4.0)
+                }
             }
-            firstResponder()?.insertText(sender.currentTitle!)
-            if firstResponder()!.text!.characters.count == 6 {
-                firstResponder()?.insertText(" ")
-            } else if firstResponder()!.text!.characters.count == 13 {
-                firstResponder()?.insertText(" ")
-            } //todo
         }
     }
 
-    func editTextField(text: String) {
-        if textFields.count == 0 {
-            return
+    func tap(sender: UIButton) {
+        switch sender.tag {
+        case 12:
+            firstResponder()?.deleteBackward()
+        case 13, 9:
+            firstResponder()?.resignFirstResponder()
+        default:
+            firstResponder()?.insertText(sender.currentTitle!)
         }
-        firstResponder()?.text = text
     }
 
     func firstResponder() -> UITextField? {
@@ -138,15 +164,40 @@ public class IDCardKeyboard: UIView, UITextFieldDelegate, UIInputViewAudioFeedba
         return firstResponder
     }
 
+    func LocalizedString(key: String) -> String {
+        return (NSBundle(identifier: "com.apple.UIKit")?.localizedStringForKey(key, value: nil, table: nil))!
+    }
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func setDoneButton(title: String, titleColor: UIColor = .whiteColor(), theme: UIColor = DEFAULT_DONE_COLOR) {
+        for item in subviews {
+            if item.tag == 13 {
+                let itemButton = item as! UIButton
+                itemButton.titleLabel?.font = UIFont.systemFontOfSize(17)
+                itemButton.setTitle(title, forState: .Normal)
+                itemButton.backgroundColor = theme
+                itemButton.setTitleColor(titleColor, forState: .Normal)
+            }
+        }
+    }
 }
 
+extension UIImage {
+    public class func ic_imageWithColor(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+        UIGraphicsBeginImageContext(size)
+        color.set()
+        UIRectFill(CGRect(origin: CGPoint.zero, size: size))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+}
 
-/*
- keyboard height
- iphone5 : 224
- iphone6 : 258
- iphone6 plus: 271
- */
+public extension UITextField {
+    public func idcardKeyboard(view: UIView) {
+        IDCardKeyboard.shareKeyboard.addKeyboard(view, field: self)
+    }
+}
