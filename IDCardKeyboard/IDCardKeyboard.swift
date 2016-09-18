@@ -29,7 +29,7 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
     var textFields = [UITextField]()
     var superView: UIView! = nil
 
-    override init(frame: CGRect, inputViewStyle: UIInputViewStyle) {
+    public override init(frame: CGRect, inputViewStyle: UIInputViewStyle) {
         var frameH = CGFloat(224.0)
         switch Device() {
         case .iPhone4, .iPhone4s:
@@ -172,7 +172,7 @@ public class IDCardKeyboard: UIInputView, UITextFieldDelegate, UIInputViewAudioF
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setDoneButton(title: String, titleColor: UIColor = .whiteColor(), theme: UIColor = DEFAULT_DONE_COLOR) {
+    public func setDoneButton(title: String, titleColor: UIColor = .whiteColor(), theme: UIColor = DEFAULT_DONE_COLOR) {
         for item in subviews {
             if item.tag == 13 {
                 let itemButton = item as! UIButton
