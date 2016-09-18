@@ -30,6 +30,10 @@ target '<Your Target Name>' do
     pod 'IDCardKeyboard', '~> 1.0.8'
 end
 ```
+Swift 2.3:
+```ruby
+    pod 'IDCardKeyboard', :git => 'https://github.com/CNKCQ/DigitalKeyboard.git', :branch => 'Swift2.3'
+```
 Swift 3.0：
 ```ruby
     pod 'DigitalKeyboard' 
