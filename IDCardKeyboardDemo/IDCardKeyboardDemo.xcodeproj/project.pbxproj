@@ -295,6 +295,7 @@
 				TargetAttributes = {
 					3C6487411CFC276600662391 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 55RM2FNAH2;
 					};
 					3C6487551CFC276600662391 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -706,6 +707,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -744,6 +746,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -754,11 +757,13 @@
 			baseConfigurationReference = FB0D04ECB190EFF65F539643 /* Pods-IDCardKeyboardDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 55RM2FNAH2;
 				INFOPLIST_FILE = IDCardKeyboardDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.KingCQ.IDCardKeyboardDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -767,11 +772,13 @@
 			baseConfigurationReference = BCB62D86EF84A996AD6AA163 /* Pods-IDCardKeyboardDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 55RM2FNAH2;
 				INFOPLIST_FILE = IDCardKeyboardDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.KingCQ.IDCardKeyboardDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
