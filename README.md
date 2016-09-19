@@ -36,7 +36,7 @@ Swift 2.3:
 ```
 Swift 3.0：
 ```ruby
-    pod 'DigitalKeyboard' 
+    pod 'DigitalKeyboard', :git => 'https://github.com/CNKCQ/DigitalKeyboard.git' 
 ```
 
 
