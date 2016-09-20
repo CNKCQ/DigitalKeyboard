@@ -17,7 +17,7 @@ public enum KeyboardStyle {
 }
 
 public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
-    
+    public static let shareKeyboard: DigitalKeyboard = DigitalKeyboard(frame: CGRect(x:0, y:0, width: screenWith, height: 224), inputViewStyle: .keyboard)
     public var style = KeyboardStyle.IDCard {
         didSet {
             setDigitButton(style: style)
@@ -53,7 +53,7 @@ public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addKeyboard(view: UIView, field: UITextField?=nil) {
+    public func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
         customSubview()
         if let textField = field {
@@ -73,6 +73,21 @@ public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
     }
     
     private func customSubview() {
+        var backSpace: UIImage?
+        var dismiss: UIImage?
+        let podBundle = Bundle(for: self.classForCoder)
+        if let bundleURL = podBundle.url(forResource: "DigitalKeyboard", withExtension: "bundle") {
+            if let bundle = Bundle(url: bundleURL) {
+                backSpace = UIImage(named: "Keyboard_Backspace", in: bundle, compatibleWith: nil)
+                dismiss = UIImage(named: "Keyboard_DismissKey", in: bundle, compatibleWith: nil)
+            } else {
+                backSpace = UIImage(named: "Keyboard_Backspace")
+                dismiss = UIImage(named: "Keyboard_DismissKey")
+            }
+        } else {
+            backSpace = UIImage(named: "Keyboard_Backspace")
+            dismiss = UIImage(named: "Keyboard_DismissKey")
+        }
         for idx in 0...13 {
             let button = UIButton()
             button.titleLabel?.font = UIFont.systemFont(ofSize: 28)
@@ -80,21 +95,6 @@ public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
             button.tag = idx
             highlight(heghlight: shouldHighlight)
             addSubview(button)
-            var backSpace: UIImage?
-            var dismiss: UIImage?
-            let podBundle = Bundle(for: self.classForCoder)
-            if let bundleURL = podBundle.url(forResource: "DigitalKeyboard", withExtension: "bundle") {
-                if let bundle = Bundle(url: bundleURL) {
-                    backSpace = UIImage(named: "Keyboard_Backspace", in: bundle, compatibleWith: nil)
-                    dismiss = UIImage(named: "Keyboard_DismissKey", in: bundle, compatibleWith: nil)
-                } else {
-                    backSpace = UIImage(named: "Keyboard_Backspace")
-                    dismiss = UIImage(named: "Keyboard_DismissKey")
-                }
-            } else {
-                backSpace = UIImage(named: "Keyboard_Backspace")
-                dismiss = UIImage(named: "Keyboard_DismissKey")
-            }
             button.setTitleColor(UIColor.black, for: .normal)
             switch idx {
             case 9:
@@ -230,5 +230,11 @@ extension UIImage {
 extension DigitalKeyboard: UIInputViewAudioFeedback {
     public var enableInputClicksWhenVisible: Bool {
         return true
+    }
+}
+
+public extension UITextField {
+    public func idcardKeyboard(view: UIView) {
+        DigitalKeyboard.shareKeyboard.addKeyboard(view: view, field: self)
     }
 }
