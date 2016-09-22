@@ -24,6 +24,14 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
         }
     }
     
+    open var isSafety: Bool = false {
+        didSet {
+            if isSafety {
+                NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotify(notifiction:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+            }
+        }
+    }
+    
     open var shouldHighlight = true {
         didSet {
             highlight(heghlight: shouldHighlight)
@@ -37,6 +45,7 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
     
     private var textFields = [UITextField]()
     private var superView: UIView? = nil
+    private var buttions: [UIButton] = []
     
     public convenience init(view: UIView, field: UITextField?=nil) {
         self.init(frame: CGRect.zero, inputViewStyle: .keyboard)
@@ -102,6 +111,7 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
                 button.setImage(dismiss, for: .normal)
             case 10:
                 button.setTitle("0", for: .normal)
+                buttions.append(button)
             case 11:
                 button.setTitle("X", for: .normal)
             case 12:
@@ -116,6 +126,7 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
                 button.setTitle(LocalizedString(key: "Done"), for: .normal)
             default:
                 button.setTitle("\(idx + 1)", for: .normal)
+                buttions.append(button)
             }
             button.addTarget(self, action: #selector(tap), for: .touchUpInside)
         }
@@ -152,7 +163,6 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
                 let width = frame.width / 4 * 3
                 let idx = view.tag
                 if idx >= 12 {
-                    
                     view.frame = CGRect(x: width + marginvalue, y: CGFloat((idx-12)%2) * (frame.height/2.0 + marginvalue), width: frame.width/4, height: (frame.height - marginvalue)/2.0)
                 } else {
                     view.frame = CGRect(x: CGFloat(idx%3) * ((width - 2*marginvalue)/3+marginvalue), y: CGFloat(idx/3) * (frame.height/4.0 + marginvalue), width: (width - 2*marginvalue)/3, height: frame.height/4.0)
@@ -174,7 +184,6 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
                 }
             }
         }
-
     }
     
     func setDigitButton(style: KeyboardStyle) {
@@ -216,6 +225,19 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
         itemButton.backgroundColor = theme
         itemButton.setTitleColor(titleColor, for: .normal)
     }
+    
+    func keyboardWillShowNotify(notifiction: NSNotification) {
+        titles = titles.sorted { _ in
+            arc4random() < arc4random()
+        }
+        if !buttions.isEmpty {
+            for (idx, item) in buttions.enumerated() {
+                item.setTitle(titles[idx], for: .normal)
+            }
+        }
+    }
+    
+    private lazy var titles = [ "0","1","2","3","4","5","6","7","8","9"]
 }
 
 extension UIImage {
