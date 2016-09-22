@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         let keyboard = DigitalKeyboard(view: view)
         keyboard.style = .Number
         keyboard.customDoneButton(title: "hello", titleColor: UIColor.blue, theme: UIColor.green, target: self, callback: #selector(test))
-        keyboard.isSafety = false
+        keyboard.isSafety = true
         textField.inputView = keyboard
         textField.becomeFirstResponder()
     }
