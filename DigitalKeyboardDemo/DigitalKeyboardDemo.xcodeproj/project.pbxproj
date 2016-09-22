@@ -235,7 +235,7 @@
 				TargetAttributes = {
 					04A28DBF1D8A676C00D315F0 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = GTVM2F95ZD;
+						DevelopmentTeam = 46A8679957;
 						ProvisioningStyle = Automatic;
 					};
 					04A28DD31D8A676C00D315F0 = {
@@ -463,7 +463,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GTVM2F95ZD;
+				DEVELOPMENT_TEAM = 46A8679957;
 				INFOPLIST_FILE = DigitalKeyboardDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = h.DigitalKeyboardDemo;
@@ -476,7 +476,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GTVM2F95ZD;
+				DEVELOPMENT_TEAM = 46A8679957;
 				INFOPLIST_FILE = DigitalKeyboardDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = h.DigitalKeyboardDemo;

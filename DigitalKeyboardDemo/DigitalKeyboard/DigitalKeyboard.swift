@@ -16,22 +16,22 @@ public enum KeyboardStyle {
     case Number
 }
 
-public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
-    public static let shareKeyboard: DigitalKeyboard = DigitalKeyboard(frame: CGRect(x:0, y:0, width: screenWith, height: 224), inputViewStyle: .keyboard)
-    public var style = KeyboardStyle.IDCard {
+open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
+    open static let shareKeyboard: DigitalKeyboard = DigitalKeyboard(frame: CGRect(x:0, y:0, width: screenWith, height: 224), inputViewStyle: .keyboard)
+    open var style = KeyboardStyle.IDCard {
         didSet {
             setDigitButton(style: style)
         }
     }
     
-    public var shouldHighlight = true {
+    open var shouldHighlight = true {
         didSet {
             highlight(heghlight: shouldHighlight)
         }
     }
     
-    public func customDoneButton(title: String, titleColor: UIColor = UIColor.white, theme: UIColor = defaultDoneColor) {
-        setDoneButton(title: title, titleColor: titleColor, theme: theme)
+    open func customDoneButton(title: String, titleColor: UIColor = UIColor.white, theme: UIColor = defaultDoneColor, target: UIViewController? = nil,  callback: Selector? = nil) {
+        setDoneButton(title: title, titleColor: titleColor, theme: theme, target: target, callback: callback)
     }
 
     
@@ -53,7 +53,7 @@ public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func addKeyboard(view: UIView, field: UITextField?=nil) {
+    open func addKeyboard(view: UIView, field: UITextField?=nil) {
         superView = view
         customSubview()
         if let textField = field {
@@ -145,7 +145,7 @@ public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
         return firstResponder
     }
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         for view in subviews {
             if view .isKind(of: UIButton.self) {
@@ -204,9 +204,12 @@ public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
         return (Bundle(identifier: "com.apple.UIKit")?.localizedString(forKey: key, value: nil, table: nil))!
     }
     
-    func setDoneButton(title: String, titleColor: UIColor, theme: UIColor) {
+    func setDoneButton(title: String, titleColor: UIColor, theme: UIColor, target: UIViewController?, callback: Selector?) {
         guard let itemButton = findButtonByTag(tag: 13) else {
             fatalError("not found the button with the tag")
+        }
+        if let selector = callback, let target = target {
+            itemButton.addTarget(target, action: selector, for: .touchUpInside)
         }
         itemButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         itemButton.setTitle(title, for: .normal)
@@ -216,7 +219,7 @@ public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
 }
 
 extension UIImage {
-    public class func dk_imageWithColor(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+    open class func dk_imageWithColor(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
         UIGraphicsBeginImageContext(size)
         color.set()
         UIRectFill(CGRect(origin: CGPoint.zero, size: size))
@@ -228,7 +231,7 @@ extension UIImage {
 
 // MARK: UIInputViewAudioFeedback
 extension DigitalKeyboard: UIInputViewAudioFeedback {
-    public var enableInputClicksWhenVisible: Bool {
+    open var enableInputClicksWhenVisible: Bool {
         return true
     }
 }

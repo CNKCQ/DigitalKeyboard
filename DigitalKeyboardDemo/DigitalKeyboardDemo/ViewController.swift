@@ -19,9 +19,13 @@ class ViewController: UIViewController {
         view.addSubview(textField)
         let keyboard = DigitalKeyboard(view: view)
         keyboard.style = .Number
-        keyboard.customDoneButton(title: "hello", titleColor: UIColor.blue, theme: UIColor.green)
+        keyboard.customDoneButton(title: "hello", titleColor: UIColor.blue, theme: UIColor.green, target: self, callback: #selector(test))
         textField.inputView = keyboard
         textField.becomeFirstResponder()
+    }
+    
+    func test() {
+        print("hello ok")
     }
     
     override func didReceiveMemoryWarning() {
