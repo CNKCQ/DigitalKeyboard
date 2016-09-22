@@ -7,6 +7,7 @@
 # DigitalKeyboard
 A custom digital keyboard for idcard
 ##### :eyes: See also:
+![dititalkeyboard_display](https://cloud.githubusercontent.com/assets/8440220/18740685/8f6b6824-80dd-11e6-99a7-6a8a76152bab.gif)
 ![](http://7xslr9.com1.z0.glb.clouddn.com/IDKeyboard_id.gif) ![](http://7xslr9.com1.z0.glb.clouddn.com/IDKeyboard_nu.gif) 
 ### CocoaPods
 
