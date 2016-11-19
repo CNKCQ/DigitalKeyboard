@@ -14,17 +14,23 @@
 		04A28DCE1D8A676C00D315F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A28DCC1D8A676C00D315F0 /* LaunchScreen.storyboard */; };
 		04A28DD91D8A676C00D315F0 /* DigitalKeyboardDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A28DD81D8A676C00D315F0 /* DigitalKeyboardDemoTests.swift */; };
 		04A28DE41D8A676C00D315F0 /* DigitalKeyboardDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A28DE31D8A676C00D315F0 /* DigitalKeyboardDemoUITests.swift */; };
-		3C5613591DE0476300EA22A6 /* DigitalKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5613511DE0476300EA22A6 /* DigitalKeyboard.swift */; };
-		3C56135A1DE0476300EA22A6 /* Keyboard_Backspace@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5613541DE0476300EA22A6 /* Keyboard_Backspace@2x.png */; };
-		3C56135B1DE0476300EA22A6 /* Keyboard_Backspace@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5613551DE0476300EA22A6 /* Keyboard_Backspace@3x.png */; };
-		3C56135C1DE0476300EA22A6 /* Keyboard_DismissKey.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5613561DE0476300EA22A6 /* Keyboard_DismissKey.png */; };
-		3C56135D1DE0476300EA22A6 /* Keyboard_DismissKey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5613571DE0476300EA22A6 /* Keyboard_DismissKey@2x.png */; };
-		3C56135E1DE0476300EA22A6 /* Keyboard_DismissKey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5613581DE0476300EA22A6 /* Keyboard_DismissKey@3x.png */; };
 		3C5613681DE047D300EA22A6 /* DigitalKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C5613661DE047D300EA22A6 /* DigitalKeyboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3C56136B1DE047D300EA22A6 /* DigitalKeyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5613641DE047D300EA22A6 /* DigitalKeyboard.framework */; };
 		3C56136C1DE047D300EA22A6 /* DigitalKeyboard.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5613641DE047D300EA22A6 /* DigitalKeyboard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3C5613721DE0493000EA22A6 /* DigitalKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C5613711DE0493000EA22A6 /* DigitalKeyboard.bundle */; };
-		3C5613731DE0493000EA22A6 /* DigitalKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C5613711DE0493000EA22A6 /* DigitalKeyboard.bundle */; };
+		3C56137E1DE04D7F00EA22A6 /* DigitalKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5613751DE04D7F00EA22A6 /* DigitalKeyboard.swift */; };
+		3C56137F1DE04D7F00EA22A6 /* DigitalKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5613751DE04D7F00EA22A6 /* DigitalKeyboard.swift */; };
+		3C5613801DE04D7F00EA22A6 /* DigitalKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C5613771DE04D7F00EA22A6 /* DigitalKeyboard.bundle */; };
+		3C5613811DE04D7F00EA22A6 /* DigitalKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C5613771DE04D7F00EA22A6 /* DigitalKeyboard.bundle */; };
+		3C5613821DE04D7F00EA22A6 /* Keyboard_Backspace@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5613791DE04D7F00EA22A6 /* Keyboard_Backspace@2x.png */; };
+		3C5613831DE04D7F00EA22A6 /* Keyboard_Backspace@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5613791DE04D7F00EA22A6 /* Keyboard_Backspace@2x.png */; };
+		3C5613841DE04D7F00EA22A6 /* Keyboard_Backspace@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C56137A1DE04D7F00EA22A6 /* Keyboard_Backspace@3x.png */; };
+		3C5613851DE04D7F00EA22A6 /* Keyboard_Backspace@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C56137A1DE04D7F00EA22A6 /* Keyboard_Backspace@3x.png */; };
+		3C5613861DE04D7F00EA22A6 /* Keyboard_DismissKey.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C56137B1DE04D7F00EA22A6 /* Keyboard_DismissKey.png */; };
+		3C5613871DE04D7F00EA22A6 /* Keyboard_DismissKey.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C56137B1DE04D7F00EA22A6 /* Keyboard_DismissKey.png */; };
+		3C5613881DE04D7F00EA22A6 /* Keyboard_DismissKey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C56137C1DE04D7F00EA22A6 /* Keyboard_DismissKey@2x.png */; };
+		3C5613891DE04D7F00EA22A6 /* Keyboard_DismissKey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C56137C1DE04D7F00EA22A6 /* Keyboard_DismissKey@2x.png */; };
+		3C56138A1DE04D7F00EA22A6 /* Keyboard_DismissKey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C56137D1DE04D7F00EA22A6 /* Keyboard_DismissKey@3x.png */; };
+		3C56138B1DE04D7F00EA22A6 /* Keyboard_DismissKey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C56137D1DE04D7F00EA22A6 /* Keyboard_DismissKey@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,16 +85,16 @@
 		04A28DDF1D8A676C00D315F0 /* DigitalKeyboardDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DigitalKeyboardDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A28DE31D8A676C00D315F0 /* DigitalKeyboardDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalKeyboardDemoUITests.swift; sourceTree = "<group>"; };
 		04A28DE51D8A676C00D315F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C5613511DE0476300EA22A6 /* DigitalKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitalKeyboard.swift; sourceTree = "<group>"; };
-		3C5613541DE0476300EA22A6 /* Keyboard_Backspace@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_Backspace@2x.png"; sourceTree = "<group>"; };
-		3C5613551DE0476300EA22A6 /* Keyboard_Backspace@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_Backspace@3x.png"; sourceTree = "<group>"; };
-		3C5613561DE0476300EA22A6 /* Keyboard_DismissKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Keyboard_DismissKey.png; sourceTree = "<group>"; };
-		3C5613571DE0476300EA22A6 /* Keyboard_DismissKey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_DismissKey@2x.png"; sourceTree = "<group>"; };
-		3C5613581DE0476300EA22A6 /* Keyboard_DismissKey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_DismissKey@3x.png"; sourceTree = "<group>"; };
 		3C5613641DE047D300EA22A6 /* DigitalKeyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DigitalKeyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C5613661DE047D300EA22A6 /* DigitalKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DigitalKeyboard.h; sourceTree = "<group>"; };
 		3C5613671DE047D300EA22A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C5613711DE0493000EA22A6 /* DigitalKeyboard.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DigitalKeyboard.bundle; sourceTree = "<group>"; };
+		3C5613751DE04D7F00EA22A6 /* DigitalKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitalKeyboard.swift; sourceTree = "<group>"; };
+		3C5613771DE04D7F00EA22A6 /* DigitalKeyboard.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DigitalKeyboard.bundle; sourceTree = "<group>"; };
+		3C5613791DE04D7F00EA22A6 /* Keyboard_Backspace@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_Backspace@2x.png"; sourceTree = "<group>"; };
+		3C56137A1DE04D7F00EA22A6 /* Keyboard_Backspace@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_Backspace@3x.png"; sourceTree = "<group>"; };
+		3C56137B1DE04D7F00EA22A6 /* Keyboard_DismissKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Keyboard_DismissKey.png; sourceTree = "<group>"; };
+		3C56137C1DE04D7F00EA22A6 /* Keyboard_DismissKey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_DismissKey@2x.png"; sourceTree = "<group>"; };
+		3C56137D1DE04D7F00EA22A6 /* Keyboard_DismissKey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Keyboard_DismissKey@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +133,7 @@
 		04A28DB71D8A676C00D315F0 = {
 			isa = PBXGroup;
 			children = (
-				3C5613501DE0476300EA22A6 /* DigitalKeyboard */,
+				3C5613741DE04D7F00EA22A6 /* DigitalKeyboard */,
 				04A28DC21D8A676C00D315F0 /* DigitalKeyboardDemo */,
 				04A28DD71D8A676C00D315F0 /* DigitalKeyboardDemoTests */,
 				04A28DE21D8A676C00D315F0 /* DigitalKeyboardDemoUITests */,
@@ -178,37 +184,6 @@
 			path = DigitalKeyboardDemoUITests;
 			sourceTree = "<group>";
 		};
-		3C5613501DE0476300EA22A6 /* DigitalKeyboard */ = {
-			isa = PBXGroup;
-			children = (
-				3C5613511DE0476300EA22A6 /* DigitalKeyboard.swift */,
-				3C5613521DE0476300EA22A6 /* Resources */,
-			);
-			name = DigitalKeyboard;
-			path = ../DigitalKeyboard;
-			sourceTree = "<group>";
-		};
-		3C5613521DE0476300EA22A6 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				3C5613531DE0476300EA22A6 /* images */,
-				3C5613711DE0493000EA22A6 /* DigitalKeyboard.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		3C5613531DE0476300EA22A6 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				3C5613541DE0476300EA22A6 /* Keyboard_Backspace@2x.png */,
-				3C5613551DE0476300EA22A6 /* Keyboard_Backspace@3x.png */,
-				3C5613561DE0476300EA22A6 /* Keyboard_DismissKey.png */,
-				3C5613571DE0476300EA22A6 /* Keyboard_DismissKey@2x.png */,
-				3C5613581DE0476300EA22A6 /* Keyboard_DismissKey@3x.png */,
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
 		3C5613651DE047D300EA22A6 /* DigitalKeyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +191,37 @@
 				3C5613671DE047D300EA22A6 /* Info.plist */,
 			);
 			path = DigitalKeyboard;
+			sourceTree = "<group>";
+		};
+		3C5613741DE04D7F00EA22A6 /* DigitalKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3C5613751DE04D7F00EA22A6 /* DigitalKeyboard.swift */,
+				3C5613761DE04D7F00EA22A6 /* Resources */,
+			);
+			name = DigitalKeyboard;
+			path = ../DigitalKeyboard;
+			sourceTree = "<group>";
+		};
+		3C5613761DE04D7F00EA22A6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3C5613771DE04D7F00EA22A6 /* DigitalKeyboard.bundle */,
+				3C5613781DE04D7F00EA22A6 /* images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3C5613781DE04D7F00EA22A6 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				3C5613791DE04D7F00EA22A6 /* Keyboard_Backspace@2x.png */,
+				3C56137A1DE04D7F00EA22A6 /* Keyboard_Backspace@3x.png */,
+				3C56137B1DE04D7F00EA22A6 /* Keyboard_DismissKey.png */,
+				3C56137C1DE04D7F00EA22A6 /* Keyboard_DismissKey@2x.png */,
+				3C56137D1DE04D7F00EA22A6 /* Keyboard_DismissKey@3x.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,15 +371,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C56135D1DE0476300EA22A6 /* Keyboard_DismissKey@2x.png in Resources */,
+				3C5613841DE04D7F00EA22A6 /* Keyboard_Backspace@3x.png in Resources */,
 				04A28DCE1D8A676C00D315F0 /* LaunchScreen.storyboard in Resources */,
-				3C56135C1DE0476300EA22A6 /* Keyboard_DismissKey.png in Resources */,
-				3C5613721DE0493000EA22A6 /* DigitalKeyboard.bundle in Resources */,
-				3C56135B1DE0476300EA22A6 /* Keyboard_Backspace@3x.png in Resources */,
+				3C56138A1DE04D7F00EA22A6 /* Keyboard_DismissKey@3x.png in Resources */,
+				3C5613801DE04D7F00EA22A6 /* DigitalKeyboard.bundle in Resources */,
+				3C5613821DE04D7F00EA22A6 /* Keyboard_Backspace@2x.png in Resources */,
+				3C5613881DE04D7F00EA22A6 /* Keyboard_DismissKey@2x.png in Resources */,
+				3C5613861DE04D7F00EA22A6 /* Keyboard_DismissKey.png in Resources */,
 				04A28DCB1D8A676C00D315F0 /* Assets.xcassets in Resources */,
-				3C56135E1DE0476300EA22A6 /* Keyboard_DismissKey@3x.png in Resources */,
 				04A28DC91D8A676C00D315F0 /* Main.storyboard in Resources */,
-				3C56135A1DE0476300EA22A6 /* Keyboard_Backspace@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +401,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C5613731DE0493000EA22A6 /* DigitalKeyboard.bundle in Resources */,
+				3C5613851DE04D7F00EA22A6 /* Keyboard_Backspace@3x.png in Resources */,
+				3C5613811DE04D7F00EA22A6 /* DigitalKeyboard.bundle in Resources */,
+				3C5613891DE04D7F00EA22A6 /* Keyboard_DismissKey@2x.png in Resources */,
+				3C5613831DE04D7F00EA22A6 /* Keyboard_Backspace@2x.png in Resources */,
+				3C5613871DE04D7F00EA22A6 /* Keyboard_DismissKey.png in Resources */,
+				3C56138B1DE04D7F00EA22A6 /* Keyboard_DismissKey@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +419,7 @@
 			files = (
 				04A28DC61D8A676C00D315F0 /* ViewController.swift in Sources */,
 				04A28DC41D8A676C00D315F0 /* AppDelegate.swift in Sources */,
-				3C5613591DE0476300EA22A6 /* DigitalKeyboard.swift in Sources */,
+				3C56137E1DE04D7F00EA22A6 /* DigitalKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C56137F1DE04D7F00EA22A6 /* DigitalKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +583,7 @@
 		04A28DE91D8A676C00D315F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 46A8679957;
 				INFOPLIST_FILE = DigitalKeyboardDemo/Info.plist;
@@ -584,6 +597,7 @@
 		04A28DEA1D8A676C00D315F0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 46A8679957;
 				INFOPLIST_FILE = DigitalKeyboardDemo/Info.plist;
