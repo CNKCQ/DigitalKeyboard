@@ -11,14 +11,14 @@ private let marginvalue = CGFloat(0.5)
 private let screenWith = UIScreen.main.bounds.size.width
 private let defaultDoneColor = UIColor(red: 28/255, green: 171/255, blue: 235/255, alpha: 1)
 
-public enum KeyboardStyle {
-    case IDCard
-    case Number
+public enum Style {
+    case idcard
+    case number
 }
 
 open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
-    open static let shareKeyboard: DigitalKeyboard = DigitalKeyboard(frame: CGRect(x:0, y:0, width: screenWith, height: 224), inputViewStyle: .keyboard)
-    open var style = KeyboardStyle.IDCard {
+    open static let `default` = DigitalKeyboard(frame: CGRect(x:0, y:0, width: screenWith, height: 224), inputViewStyle: .keyboard)
+    open var style = Style.idcard {
         didSet {
             setDigitButton(style: style)
         }
@@ -55,7 +55,7 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
     private override init(frame: CGRect, inputViewStyle: UIInputViewStyle) {
         let frameH = CGFloat(224)
         super.init(frame: CGRect(x: 0, y: 0, width: screenWith, height: frameH), inputViewStyle: inputViewStyle)
-        backgroundColor = UIColor.lightGray
+        backgroundColor = .lightGray
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -176,31 +176,31 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
             if let button = view as? UIButton {
                 if button.tag == 13 {return}
                 if heghlight {
-                    button.setBackgroundImage(UIImage.dk_imageWithColor(color: UIColor.white), for: .normal)
-                    button.setBackgroundImage(UIImage.dk_imageWithColor(color: UIColor.lightGray), for: .highlighted)
+                    button.setBackgroundImage(UIImage.dk_image(with: .white), for: .normal)
+                    button.setBackgroundImage(UIImage.dk_image(with: .lightGray), for: .highlighted)
                 } else {
-                    button.setBackgroundImage(UIImage.dk_imageWithColor(color: UIColor.white), for: .normal)
-                    button.setBackgroundImage(UIImage.dk_imageWithColor(color: UIColor.white), for: .highlighted)
+                    button.setBackgroundImage(UIImage.dk_image(with: .white), for: .normal)
+                    button.setBackgroundImage(UIImage.dk_image(with: .white), for: .highlighted)
                 }
             }
         }
     }
     
-    func setDigitButton(style: KeyboardStyle) {
-        guard let button = findButtonByTag(tag: 11) else {
+    func setDigitButton(style: Style) {
+        guard let button = findButton(by: 11) else {
             fatalError("not found the button with the tag")
         }
         switch style {
-        case .IDCard:
+        case .idcard:
             button.setTitle("X", for: .normal)
-        case .Number:
+        case .number:
             let locale = Locale.current
             let decimalSeparator = locale.decimalSeparator! as String 
             button.setTitle(decimalSeparator, for: .normal)
         }
     }
     
-    func findButtonByTag(tag: Int) -> UIButton? {
+    func findButton(by tag: Int) -> UIButton? {
         for button in subviews {
             if button.tag == tag {
                 return button as? UIButton
@@ -214,7 +214,7 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
     }
     
     func setDoneButton(title: String, titleColor: UIColor, theme: UIColor, target: UIViewController?, callback: Selector?) {
-        guard let itemButton = findButtonByTag(tag: 13) else {
+        guard let itemButton = findButton(by: 13) else {
             fatalError("not found the button with the tag")
         }
         if let selector = callback, let target = target {
@@ -241,13 +241,13 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
 }
 
 extension UIImage {
-    open class func dk_imageWithColor(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+    open class func dk_image(with color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
         UIGraphicsBeginImageContext(size)
         color.set()
         UIRectFill(CGRect(origin: CGPoint.zero, size: size))
-        let image = UIGraphicsGetImageFromCurrentImageContext()
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        return image!
+        return image
     }
 }
 
@@ -260,6 +260,6 @@ extension DigitalKeyboard: UIInputViewAudioFeedback {
 
 public extension UITextField {
     public func idcardKeyboard(view: UIView) {
-        DigitalKeyboard.shareKeyboard.addKeyboard(view: view, field: self)
+        DigitalKeyboard.default.addKeyboard(view: view, field: self)
     }
 }
