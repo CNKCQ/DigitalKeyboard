@@ -258,8 +258,6 @@ extension DigitalKeyboard: UIInputViewAudioFeedback {
     }
 }
 
-public extension UITextField {
-    public func idcardKeyboard(view: UIView) {
-        DigitalKeyboard.default.addKeyboard(view: view, field: self)
-    }
-}
+
+
+
