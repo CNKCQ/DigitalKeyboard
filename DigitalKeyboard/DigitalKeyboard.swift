@@ -16,15 +16,15 @@ public enum Style {
     case number
 }
 
-open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
-    open static let `default` = DigitalKeyboard(frame: CGRect(x:0, y:0, width: screenWith, height: 224), inputViewStyle: .keyboard)
-    open var style = Style.idcard {
+public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
+    public static let `default` = DigitalKeyboard(frame: CGRect(x:0, y:0, width: screenWith, height: 224), inputViewStyle: .keyboard)
+    public var style = Style.idcard {
         didSet {
             setDigitButton(style: style)
         }
     }
     
-    open var isSafety: Bool = false {
+    public var isSafety: Bool = false {
         didSet {
             if isSafety {
                 NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotify(notifiction:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -32,13 +32,13 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
         }
     }
     
-    open var shouldHighlight = true {
+    public var shouldHighlight = true {
         didSet {
             highlight(heghlight: shouldHighlight)
         }
     }
     
-    open func customDoneButton(title: String, titleColor: UIColor = UIColor.white, theme: UIColor = defaultDoneColor, target: UIViewController? = nil,  callback: Selector? = nil) {
+    public func customDoneButton(title: String, titleColor: UIColor = UIColor.white, theme: UIColor = defaultDoneColor, target: UIViewController? = nil,  callback: Selector? = nil) {
         setDoneButton(title: title, titleColor: titleColor, theme: theme, target: target, callback: callback)
     }
 
@@ -49,7 +49,7 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
     
     public convenience init(view: UIView, field: UITextField?=nil) {
         self.init(frame: CGRect.zero, inputViewStyle: .keyboard)
-        addKeyboard(view: view, field: field)
+        addKeyboard(view, field: field)
     }
     
     private override init(frame: CGRect, inputViewStyle: UIInputViewStyle) {
@@ -62,7 +62,7 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    open func addKeyboard(view: UIView, field: UITextField?=nil) {
+    public func addKeyboard(_ view: UIView, field: UITextField?=nil) {
         superView = view
         customSubview()
         if let textField = field {
@@ -156,7 +156,7 @@ open class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
         return firstResponder
     }
     
-    open override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         for view in subviews {
             if view .isKind(of: UIButton.self) {
