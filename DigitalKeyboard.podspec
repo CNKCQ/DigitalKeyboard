@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "DigitalKeyboard"
-  s.version      = “1.2.5”
+  s.version      = "1.2.5"
   s.summary      = "A custom keyboard of DigitalKeyboard."
 
   s.description  = <<-DESC
