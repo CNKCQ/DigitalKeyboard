@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         let textField = UITextField(frame: CGRect(x: 100, y: 120, width: 200, height: 35))
         textField.borderStyle = .roundedRect
         view.addSubview(textField)
-        DigitalKeyboard.default.addKeyboard(view: view, field: textField)
+        DigitalKeyboard.default.addKeyboard(view, field: textField)
         textField.becomeFirstResponder()
 //        let keyboard = DigitalKeyboard(view: view)
 //        keyboard.style = .number

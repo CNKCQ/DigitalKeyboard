@@ -47,7 +47,7 @@ public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
     private var superView: UIView? = nil
     private var buttions: [UIButton] = []
     
-    public convenience init(view: UIView, field: UITextField?=nil) {
+    public convenience init(_ view: UIView, field: UITextField?=nil) {
         self.init(frame: CGRect.zero, inputViewStyle: .keyboard)
         addKeyboard(view, field: field)
     }
@@ -241,7 +241,7 @@ public class  DigitalKeyboard: UIInputView, UITextFieldDelegate {
 }
 
 extension UIImage {
-    open class func dk_image(with color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+    public class func dk_image(with color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
         UIGraphicsBeginImageContext(size)
         color.set()
         UIRectFill(CGRect(origin: CGPoint.zero, size: size))
