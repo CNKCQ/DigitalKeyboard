@@ -1,6 +1,6 @@
 
 # DigitalKeyboard
-[![CI Status](http://img.shields.io/travis/kishikawakatsumi/IDCardKeyboard.svg?style=flat)](https://travis-ci.org/kishikawakatsumi/IDCardKeyboard)
+[![CI Status](http://img.shields.io/travis/CNKCQ/IDCardKeyboard.svg?style=flat)](https://travis-ci.org/CNKCQ/IDCardKeyboard)
 [![Version](https://img.shields.io/cocoapods/v/IDCardKeyboard.svg?style=flat)](http://cocoadocs.org/docsets/IDCardKeyboard)
 [![Platform](https://img.shields.io/cocoapods/p/IDCardKeyboard.svg?style=flat)](http://cocoadocs.org/docsets/IDCardKeyboard)
 ![](https://camo.githubusercontent.com/7d97f558ccb8751e27fa65eeee94047955eba100/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a7861666332716159644d375a4f68655957614d6d51412e706e67)
