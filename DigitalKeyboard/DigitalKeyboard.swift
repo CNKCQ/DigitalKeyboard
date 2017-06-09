@@ -131,7 +131,7 @@ public class DigitalKeyboard: UIInputView, UITextFieldDelegate {
         }
     }
 
-    func tap(sender: UIButton) {
+    @objc func tap(sender: UIButton) {
         guard let text = sender.currentTitle else {
             fatalError("not found the sender's currentTitle")
         }
@@ -225,8 +225,8 @@ public class DigitalKeyboard: UIInputView, UITextFieldDelegate {
         itemButton.setTitleColor(titleColor, for: .normal)
     }
 
-    func keyboardWillShowNotify(notifiction _: NSNotification) {
-        titles = titles.sorted { _ in
+    @objc func keyboardWillShowNotify(notifiction _: NSNotification) {
+        titles = titles.sorted { _, _ in
             arc4random() < arc4random()
         }
         if !buttions.isEmpty {
