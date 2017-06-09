@@ -81,4 +81,4 @@ class ViewController: UIViewController {
 }
 
   ```
-   :key: Basics  Swift 2.2、Swift 3.0
+   :key: Basics  Swift 2.2、Swift 3.0、Swift4.0
