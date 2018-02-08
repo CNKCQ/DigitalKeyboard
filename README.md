@@ -39,6 +39,11 @@ Swift 2.3:
 ```
 Swift 3.0：
 ```ruby
+     pod 'IDCardKeyboard', '1.2.6'
+```
+
+Swift 4.0：
+```ruby
     pod 'DigitalKeyboard'
 ```
 
