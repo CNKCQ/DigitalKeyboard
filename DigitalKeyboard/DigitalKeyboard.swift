@@ -9,7 +9,6 @@
 import UIKit
 private let marginvalue = CGFloat(0.5)
 private let screenWith = UIScreen.main.bounds.size.width
-private let defaultDoneColor = UIColor(red: 28 / 255, green: 171 / 255, blue: 235 / 255, alpha: 1)
 
 public enum Style {
     case idcard
@@ -18,6 +17,11 @@ public enum Style {
 
 public class DigitalKeyboard: UIInputView, UITextFieldDelegate {
     public static let `default` = DigitalKeyboard(frame: CGRect(x: 0, y: 0, width: screenWith, height: 224), inputViewStyle: .keyboard)
+    
+    public static let defaultDoneColor = UIColor(red: 28 / 255, green: 171 / 255, blue: 235 / 255, alpha: 1)
+    
+    public var accessoryView: UIView?
+
     public var style = Style.idcard {
         didSet {
             setDigitButton(style: style)
@@ -38,7 +42,8 @@ public class DigitalKeyboard: UIInputView, UITextFieldDelegate {
         }
     }
 
-    public func customDoneButton(title: String, titleColor: UIColor = UIColor.white, theme: UIColor = defaultDoneColor, target: UIViewController? = nil, callback: Selector? = nil) {
+    public func customDoneButton(title: String, titleColor: UIColor = UIColor.white, theme: UIColor = DigitalKeyboard.defaultDoneColor, target: UIViewController? = nil, callback: Selector? = nil) {
+        
         setDoneButton(title: title, titleColor: titleColor, theme: theme, target: target, callback: callback)
     }
 
@@ -46,8 +51,9 @@ public class DigitalKeyboard: UIInputView, UITextFieldDelegate {
     private var superView: UIView?
     private var buttions: [UIButton] = []
 
-    public convenience init(_ view: UIView, field: UITextField? = nil) {
+    public convenience init(_ view: UIView, accessoryView: UIView? = nil, field: UITextField? = nil) {
         self.init(frame: CGRect.zero, inputViewStyle: .keyboard)
+        self.accessoryView = accessoryView
         addKeyboard(view, field: field)
     }
 
@@ -68,12 +74,14 @@ public class DigitalKeyboard: UIInputView, UITextFieldDelegate {
             textFields.append(textField)
             textField.inputView = self
             textField.delegate = self
+            textField.inputAccessoryView =  accessoryView
         } else {
             for view in (superView?.subviews)! {
                 if view.isKind(of: UITextField.self) {
                     let textField = view as! UITextField
                     textField.delegate = self
                     textField.inputView = self
+                    textField.inputAccessoryView = accessoryView
                     textFields.append(textField)
                 }
             }
@@ -118,7 +126,7 @@ public class DigitalKeyboard: UIInputView, UITextFieldDelegate {
                 button.setImage(backSpace, for: .normal)
             case 13:
                 button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-                button.backgroundColor = defaultDoneColor
+                button.backgroundColor = DigitalKeyboard.defaultDoneColor
                 button.setTitleColor(UIColor.white, for: .normal)
                 button.setBackgroundImage(nil, for: .normal)
                 button.setBackgroundImage(nil, for: .highlighted)
