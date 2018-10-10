@@ -80,14 +80,12 @@ public class DigitalKeyboard: UIInputView {
         if let textField = field {
             textFields.append(textField)
             textField.inputView = self
-            textField.inputDelegate = self
             textField.inputAccessoryView =  accessoryView
         } else {
             for view in (superView?.subviews)! {
                 if view.isKind(of: UITextField.self) {
                     let textField = view as! UITextField
                     textField.inputView = self
-                    textField.inputDelegate = self;
                     textField.inputAccessoryView = accessoryView
                     textFields.append(textField)
                 }
@@ -276,25 +274,4 @@ extension DigitalKeyboard: UIInputViewAudioFeedback {
     open var enableInputClicksWhenVisible: Bool {
         return true
     }
-}
-
-// MARK: UITextInputDelegate
-extension DigitalKeyboard: UITextInputDelegate {
-    
-    public func selectionWillChange(_ textInput: UITextInput?) {
-        
-    }
-    
-    public func selectionDidChange(_ textInput: UITextInput?) {
-
-    }
-    
-    public func textWillChange(_ textInput: UITextInput?) {
-
-    }
-    
-    public func textDidChange(_ textInput: UITextInput?) {
-
-    }
-    
 }
