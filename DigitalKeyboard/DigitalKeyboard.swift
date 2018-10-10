@@ -15,7 +15,13 @@ public enum Style {
     case number
 }
 
-public class DigitalKeyboard: UIInputView, UITextFieldDelegate {
+public protocol DigitalKeyboardDelete: NSObjectProtocol {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: UITextRange, replacementString string: String) -> Bool
+    
+}
+
+public class DigitalKeyboard: UIInputView {
     public static let `default` = DigitalKeyboard(frame: CGRect(x: 0, y: 0, width: screenWith, height: 224), inputViewStyle: .keyboard)
     
     public static let defaultDoneColor = UIColor(red: 28 / 255, green: 171 / 255, blue: 235 / 255, alpha: 1)
@@ -50,6 +56,7 @@ public class DigitalKeyboard: UIInputView, UITextFieldDelegate {
     private var textFields = [UITextField]()
     private var superView: UIView?
     private var buttions: [UIButton] = []
+    public  var delegate: DigitalKeyboardDelete?
 
     public convenience init(_ view: UIView, accessoryView: UIView? = nil, field: UITextField? = nil) {
         self.init(frame: CGRect.zero, inputViewStyle: .keyboard)
@@ -73,14 +80,14 @@ public class DigitalKeyboard: UIInputView, UITextFieldDelegate {
         if let textField = field {
             textFields.append(textField)
             textField.inputView = self
-            textField.delegate = self
+            textField.inputDelegate = self
             textField.inputAccessoryView =  accessoryView
         } else {
             for view in (superView?.subviews)! {
                 if view.isKind(of: UITextField.self) {
                     let textField = view as! UITextField
-                    textField.delegate = self
                     textField.inputView = self
+                    textField.inputDelegate = self;
                     textField.inputAccessoryView = accessoryView
                     textFields.append(textField)
                 }
@@ -149,7 +156,13 @@ public class DigitalKeyboard: UIInputView, UITextFieldDelegate {
         case 13, 9:
             firstResponder()?.resignFirstResponder()
         default:
-            firstResponder()?.insertText(text)
+            if let proxy = self.delegate, let responderField = firstResponder(), let range = responderField.selectedTextRange {
+                if proxy.textField(responderField, shouldChangeCharactersIn: range, replacementString: text) {
+                    firstResponder()?.insertText(text)
+                }
+            } else {
+                firstResponder()?.insertText(text)
+            }
         }
     }
 
@@ -263,4 +276,25 @@ extension DigitalKeyboard: UIInputViewAudioFeedback {
     open var enableInputClicksWhenVisible: Bool {
         return true
     }
+}
+
+// MARK: UITextInputDelegate
+extension DigitalKeyboard: UITextInputDelegate {
+    
+    public func selectionWillChange(_ textInput: UITextInput?) {
+        
+    }
+    
+    public func selectionDidChange(_ textInput: UITextInput?) {
+
+    }
+    
+    public func textWillChange(_ textInput: UITextInput?) {
+
+    }
+    
+    public func textDidChange(_ textInput: UITextInput?) {
+
+    }
+    
 }

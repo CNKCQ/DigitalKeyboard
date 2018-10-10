@@ -8,8 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, DigitalKeyboardDelete {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: UITextRange, replacementString string: String) -> Bool {
+        if string == "3" {
+            return false
+        }
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,7 +27,8 @@ class ViewController: UIViewController {
 //        DigitalKeyboard.default.addKeyboard(view, field: textField)
         let accessoryView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: self.view.bounds.width, height: 44)))
         accessoryView.backgroundColor = .red
-        _ = DigitalKeyboard(view, accessoryView: accessoryView, field: textField)
+        let digitalKeyboard = DigitalKeyboard(view, accessoryView: accessoryView, field: textField)
+        digitalKeyboard.delegate = self
         textField.becomeFirstResponder()
         //        let keyboard = DigitalKeyboard(view: view)
         //        keyboard.style = .number
