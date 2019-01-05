@@ -7,10 +7,32 @@
 //
 
 import UIKit
+import LocalAuthentication
+
+extension UIDevice {
+    /// is iPhone X ?
+    ///
+    /// - Returns: iPhone X
+    public var iPhoneXSeries: Bool {
+        if (UIDevice.current.userInterfaceIdiom != .phone) {
+            return false;
+        }
+        if #available(iOS 11.0, *) {
+            let mainWindow: UIWindow! = UIApplication.shared.delegate!.window!
+            if (mainWindow.safeAreaInsets.bottom > 0.0) {
+                return true
+            }
+        }
+        return false
+    }
+}
+
 private let marginvalue = CGFloat(0.5)
 private let screenWith = UIScreen.main.bounds.size.width
+private let safeAreaHeight: CGFloat = 224.0
+private let dkAreaHeight: CGFloat = UIDevice().iPhoneXSeries ? safeAreaHeight + 34 : safeAreaHeight
 
-public enum Style {
+public enum DKStyle {
     case idcard
     case number
 }
@@ -22,15 +44,16 @@ public protocol DigitalKeyboardDelete: NSObjectProtocol {
 }
 
 public class DigitalKeyboard: UIInputView {
-    public static let `default` = DigitalKeyboard(frame: CGRect(x: 0, y: 0, width: screenWith, height: 224), inputViewStyle: .keyboard)
+    
+    public static let `default` = DigitalKeyboard(frame: CGRect(x: 0, y: 0, width: screenWith, height: dkAreaHeight), inputViewStyle: .keyboard)
     
     public static let defaultDoneColor = UIColor(red: 28 / 255, green: 171 / 255, blue: 235 / 255, alpha: 1)
     
     public var accessoryView: UIView?
 
-    public var style = Style.idcard {
+    public var dkstyle = DKStyle.idcard {
         didSet {
-            setDigitButton(style: style)
+            setDigitButton(style: dkstyle)
         }
     }
 
@@ -56,7 +79,13 @@ public class DigitalKeyboard: UIInputView {
     private var textFields = [UITextField]()
     private var superView: UIView?
     private var buttions: [UIButton] = []
+    private lazy var bottomView: UIView = {
+        let subView: UIView = UIView(frame: CGRect(x: 0, y: safeAreaHeight + marginvalue * 4, width: screenWith, height: 44))
+        subView.backgroundColor = .white
+        return subView;
+    }()
     public  var delegate: DigitalKeyboardDelete?
+    
 
     public convenience init(_ view: UIView, accessoryView: UIView? = nil, field: UITextField? = nil) {
         self.init(frame: CGRect.zero, inputViewStyle: .keyboard)
@@ -65,8 +94,7 @@ public class DigitalKeyboard: UIInputView {
     }
 
     private override init(frame _: CGRect, inputViewStyle: UIInputViewStyle) {
-        let frameH = CGFloat(224)
-        super.init(frame: CGRect(x: 0, y: 0, width: screenWith, height: frameH), inputViewStyle: inputViewStyle)
+        super.init(frame: CGRect(x: 0, y: 0, width: screenWith, height: dkAreaHeight), inputViewStyle: inputViewStyle)
         backgroundColor = .lightGray
     }
 
@@ -116,6 +144,7 @@ public class DigitalKeyboard: UIInputView {
             button.tag = idx
             highlight(heghlight: shouldHighlight)
             addSubview(button)
+            addSubview(self.bottomView)
             button.setTitleColor(UIColor.black, for: .normal)
             switch idx {
             case 9:
@@ -181,9 +210,9 @@ public class DigitalKeyboard: UIInputView {
                 let width = frame.width / 4 * 3
                 let idx = view.tag
                 if idx >= 12 {
-                    view.frame = CGRect(x: width + marginvalue, y: CGFloat((idx - 12) % 2) * (frame.height / 2.0 + marginvalue), width: frame.width / 4, height: (frame.height - marginvalue) / 2.0)
+                    view.frame = CGRect(x: width + marginvalue, y: CGFloat((idx - 12) % 2) * (safeAreaHeight / 2.0 + marginvalue), width: frame.width / 4, height: (safeAreaHeight - marginvalue) / 2.0)
                 } else {
-                    view.frame = CGRect(x: CGFloat(idx % 3) * ((width - 2 * marginvalue) / 3 + marginvalue), y: CGFloat(idx / 3) * (frame.height / 4.0 + marginvalue), width: (width - 2 * marginvalue) / 3, height: frame.height / 4.0)
+                    view.frame = CGRect(x: CGFloat(idx % 3) * ((width - 2 * marginvalue) / 3 + marginvalue), y: CGFloat(idx / 3) * (safeAreaHeight / 4.0 + marginvalue), width: (width - 2 * marginvalue) / 3, height: safeAreaHeight / 4.0)
                 }
             }
         }
@@ -204,7 +233,7 @@ public class DigitalKeyboard: UIInputView {
         }
     }
 
-    func setDigitButton(style: Style) {
+    func setDigitButton(style: DKStyle) {
         guard let button = findButton(by: 11) else {
             fatalError("not found the button with the tag")
         }
