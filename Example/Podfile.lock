@@ -1,0 +1,16 @@
+PODS:
+  - DigitalKeyboard (1.3.0)
+
+DEPENDENCIES:
+  - DigitalKeyboard (from `../`)
+
+EXTERNAL SOURCES:
+  DigitalKeyboard:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DigitalKeyboard: ba1abb7a9058c059a7576692c6f35250e8d5de3d
+
+PODFILE CHECKSUM: 60c1c6a4b0e72dad60d3a484ef38b40275671903
+
+COCOAPODS: 1.5.3

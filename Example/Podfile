@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'DigitalKeyboard_Example' do
+  pod 'DigitalKeyboard', :path => '../'
+
+  target 'DigitalKeyboard_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
