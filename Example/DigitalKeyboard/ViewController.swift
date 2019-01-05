@@ -13,7 +13,7 @@ class ViewController: UIViewController, DigitalKeyboardDelete {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: UITextRange, replacementString string: String) -> Bool {
         if string == "3" {
-            return false
+            return true
         }
         return true
     }
